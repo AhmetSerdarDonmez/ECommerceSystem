@@ -5,12 +5,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerceSystem.Application.Repositories;
+using ECommerceSystem.Domain.Entities.Commons;
 using ECommerceSystem.Persistence.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceSystem.Persistence.Repositories
 {
-    class ReadRepositories<T> : IReadRepository<T> where T : class
+    class ReadRepositories<T> : IReadRepository<T> where T : CommonId
     {
         private readonly ECommerceDbContext _context;
 

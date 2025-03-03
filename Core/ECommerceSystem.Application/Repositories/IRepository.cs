@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceSystem.Domain.Entities.Commons;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : CommonId
     {
         DbSet<T> Table { get; }
     }
