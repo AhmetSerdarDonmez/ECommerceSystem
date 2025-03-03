@@ -11,28 +11,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceSystem.Persistence.Repositories
 {
-    class ReadRepositories<T> : IReadRepository<T> where T : CommonId
+    class ReadRepository<T> : IReadRepository<T> where T : CommonId
     {
         private readonly ECommerceDbContext _context;
 
+        public ReadRepository(ECommerceDbContext context)
+        {
+            _context = context;
+        }
 
         public DbSet<T> Table => _context.Set<T>();
 
         public IQueryable<T> GetAll() => Table;
 
-        public Task<T> GetByIdAsync(string id)
-        {
-            throw new NotImplementedException();
-        }
+        public IQueryable<T> GetWhere(Expression<Func<T, bool>> method) => Table.Where(method);
 
-        public Task<T> GetSingleAsync(Expression<Func<T, bool>> expression)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> method) => await Table.FirstOrDefaultAsync(method);
 
-        public IQueryable<T> GetWhereAsync(Expression<Func<T, bool>> expression)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<T> GetByIdAsync(string id) => await Table.FirstOrDefaultAsync(data => data.Id ==int.Parse(id));
     }
 }

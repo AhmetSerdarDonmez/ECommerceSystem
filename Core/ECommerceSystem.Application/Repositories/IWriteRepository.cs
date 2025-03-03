@@ -11,14 +11,14 @@ namespace ECommerceSystem.Application.Repositories
     {
         Task<bool> AddAsync(T model);
 
-        Task<bool> AddAsync(List<T> model);
+        Task<bool> AddRangeAsync(List<T> model);
 
-        Task<bool> UpdateAsync(T model);
+        bool Update(T model);
 
-        Task<bool> Remove(T model);
+        bool Remove(T model);
+        bool RemoveRange(List<T> models);
+        Task<bool> RemoveAsync(string id);
 
-        Task<bool> Remove(string id);
-
-        Task<bool> SaveAsync();
+        Task<int> SaveAsync();
     }
 }
