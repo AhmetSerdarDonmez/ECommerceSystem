@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace ECommerceSystem.Persistence.Repositories
 {
-    class WriteRepository<T> : IWriteRepository<T> where T : CommonId
+    public class WriteRepository<T> : IWriteRepository<T> where T : CommonId
     {
         readonly private ECommerceDbContext _contect;
 

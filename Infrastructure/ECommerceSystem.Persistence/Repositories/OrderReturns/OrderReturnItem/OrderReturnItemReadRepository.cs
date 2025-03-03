@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ECommerceSystem.Domain.Entities.Addresses;
+using ECommerceSystem.Domain.Entities.OrderReturns;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface IAdressWriteRepository : IReadRepository<Address>
+    public interface OrderReturnItemReadRepository : IReadRepository<OrderReturnItem>
     {
     }
 }

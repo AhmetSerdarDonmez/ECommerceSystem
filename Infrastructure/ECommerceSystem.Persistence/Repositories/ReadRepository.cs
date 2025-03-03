@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceSystem.Persistence.Repositories
 {
-    class ReadRepository<T> : IReadRepository<T> where T : CommonId
+    public class ReadRepository<T> : IReadRepository<T> where T : CommonId
     {
         private readonly ECommerceDbContext _context;
 
