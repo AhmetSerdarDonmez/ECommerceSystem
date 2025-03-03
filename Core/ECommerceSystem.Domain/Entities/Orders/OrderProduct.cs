@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using ECommerceSystem.Domain.Entities.Products;
 using ECommerceSystem.Domain.Entities.Inventory;
+using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Orders
 {
-    public class OrderProduct
+    public class OrderProduc : CommonId
     {
         
         public int amount { get; set; }

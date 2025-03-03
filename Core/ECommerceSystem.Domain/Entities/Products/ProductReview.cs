@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceSystem.Domain.Entities.Commons;
 using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.Products
 {
-    public class ProductReview
+    public class ProductReview : CommonId
     {
-        public int ReviewId { get; set; }
-        public int ProductId { get; set; }
-        public int UserId { get; set; }
+//        public int ReviewId { get; set; }
+ //       public int ProductId { get; set; }
+//        public int UserId { get; set; }
         public int Rating { get; set; }
         public string ReviewText { get; set; }
         public DateTime ReviewDate { get; set; } = DateTime.UtcNow;

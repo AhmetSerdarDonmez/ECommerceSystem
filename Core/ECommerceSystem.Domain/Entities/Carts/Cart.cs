@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceSystem.Domain.Entities.Commons;
 using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.Carts
 {
-    public class Cart
+    public class Cart : CommonId
     {
-        public int CartId { get; set; }
+ //       public int CartId { get; set; }
         public int? UserId { get; set; }
         public string CartType { get; set; } 
 

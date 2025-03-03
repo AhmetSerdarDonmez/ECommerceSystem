@@ -11,15 +11,17 @@ using ECommerceSystem.Domain.Entities.Promotions;
 
 namespace ECommerceSystem.Domain.Entities.Products
 {
-    public class Product:AuditableEntity , ISoftDelete 
+    public class Product : CommonId, ISoftDelete, ICommonTimeEntity
     {
-        public int ProductId { get; set; }
-        public string ProductName { get; set; }
+ //       public int ProductId { get; set; }
+ //       public string ProductName { get; set; }
         public decimal Price { get; set; }
         public string ProductDescription { get; set; }
         public string ImageUrl { get; set; }
         public bool IsDeleted { get; set; } = false;
 
+        public DateTime CreatedAt { set; get; }
+        public DateTime UpdatedAt { set; get; }
         // Navigation
         public virtual ICollection<CartProduct> CartProducts { get; set; }
         public virtual ICollection<OrderProduct> OrderProducts { get; set; }

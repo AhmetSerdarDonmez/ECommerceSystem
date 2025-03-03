@@ -8,12 +8,13 @@ using ECommerceSystem.Domain.Entities.Commons;
 using ECommerceSystem.Domain.Entities.OrderReturns;
 using ECommerceSystem.Domain.Entities.Payments;
 using ECommerceSystem.Domain.Entities.Users;
+using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Orders
 {
-    public class Order :AuditableEntity,ISoftDelete
+    public class Order :CommonId,ICommonTimeEntity,ISoftDelete
     {
-        public int OrderId { get; set; }
+ //       public int OrderId { get; set; }
         public string OrderNo { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public decimal? OrderSubtotalAmount { get; set; }
@@ -26,7 +27,8 @@ namespace ECommerceSystem.Domain.Entities.Orders
         public decimal DiscountAmount { get; set; } = 0;
         public decimal TaxAmount { get; set; } = 0;
         public bool IsDeleted { get; set; } = false;
-
+        public DateTime CreatedAt { set; get; }
+        public DateTime UpdatedAt { set; get; }
         // Navigation
         public virtual User User { get; set; }
         public virtual Address ShippingAddress { get; set; }
@@ -35,5 +37,10 @@ namespace ECommerceSystem.Domain.Entities.Orders
         public virtual ICollection<Payment> Payments { get; set; }
         public virtual ICollection<TrackingDetail> TrackingDetails { get; set; }
         public virtual ICollection<OrderReturn> OrderReturns { get; set; }
+
+
+        
+
+
     }
 }

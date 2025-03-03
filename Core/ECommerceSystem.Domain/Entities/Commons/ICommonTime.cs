@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ECommerceSystem.Domain.Entities.Commons
 {
-    public class AuditableEntity
+    public interface ICommonTimeEntity
     {
+
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 

@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceSystem.Domain.Entities.Commons;
 using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.AuditLogs
 {
-    public class AuditLog
+    public class AuditLog : CommonId
     {
 
-        public int LogId { get; set; }
+ //       public int LogId { get; set; }
+
+
         public string TableName { get; set; }
         public int RecordId { get; set; }
         public string ColumnName { get; set; }
@@ -23,6 +26,5 @@ namespace ECommerceSystem.Domain.Entities.AuditLogs
 
         // Navigation
         public virtual User ChangedByUser { get; set; }
-
     }
 }

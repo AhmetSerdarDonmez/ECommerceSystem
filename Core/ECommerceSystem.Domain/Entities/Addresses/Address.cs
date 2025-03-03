@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceSystem.Domain.Entities.Commons;
 using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.Addresses
 {
-    public class Address 
+    public class Address : CommonId
     {
-        public int AddressId { get; set; }
+//        public int AddressId { get; set; }
+
+
         public int? UserId { get; set; }
 
         public string Country { get; set; }
