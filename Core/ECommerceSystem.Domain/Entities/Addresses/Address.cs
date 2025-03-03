@@ -13,7 +13,7 @@ namespace ECommerceSystem.Domain.Entities.Addresses
 //        public int AddressId { get; set; }
 
 
-        public int? UserId { get; set; }
+//        public int? UserId { get; set; }
 
         public string Country { get; set; }
         public string City { get; set; }
