@@ -1,0 +1,39 @@
+[33mcommit a6850177bdff7890f9b6fc52dc57a258cc7059bd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author:     serdar.donmez <serdar.donmez@YESILOVANB21>
+AuthorDate: Tue Mar 4 09:45:03 2025 +0300
+Commit:     serdar.donmez <serdar.donmez@YESILOVANB21>
+CommitDate: Tue Mar 4 09:45:03 2025 +0300
+
+    minor project name fix on all concreates
+
+[33mcommit 9def19db147f60ae41ab6bc3a1bc827e094b8bba[m
+Author:     serdar.donmez <serdar.donmez@YESILOVANB21>
+AuthorDate: Tue Mar 4 09:12:33 2025 +0300
+Commit:     serdar.donmez <serdar.donmez@YESILOVANB21>
+CommitDate: Tue Mar 4 09:12:33 2025 +0300
+
+    concreate creation for every entity
+
+[33mcommit fc58290fbb6691dd0693a492ae06f776bc28497c[m
+Author:     serdar.donmez <serdar.donmez@YESILOVANB21>
+AuthorDate: Mon Mar 3 17:13:40 2025 +0300
+Commit:     serdar.donmez <serdar.donmez@YESILOVANB21>
+CommitDate: Mon Mar 3 17:13:40 2025 +0300
+
+    minor fix
+
+[33mcommit 6e221f8e9b3d9a719bd0058fa9b0a5de29d336b1[m
+Author:     serdar.donmez <serdar.donmez@YESILOVANB21>
+AuthorDate: Mon Mar 3 16:10:40 2025 +0300
+Commit:     serdar.donmez <serdar.donmez@YESILOVANB21>
+CommitDate: Mon Mar 3 16:10:40 2025 +0300
+
+    Application interfaces and Persistance concreate classes
+
+[33mcommit aa5b9351c74601207d5554994a266801573d5813[m
+Author:     serdar.donmez <serdar.donmez@YESILOVANB21>
+AuthorDate: Mon Mar 3 11:49:40 2025 +0300
+Commit:     serdar.donmez <serdar.donmez@YESILOVANB21>
+CommitDate: Mon Mar 3 11:49:40 2025 +0300
+
+    Application repositories for entities
