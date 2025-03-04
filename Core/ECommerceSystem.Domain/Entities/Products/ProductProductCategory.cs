@@ -7,10 +7,10 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Products
 {
-    public class ProductProductCategory : CommonId
+    public class ProductProductCategory 
     {
-//        public int ProductId { get; set; }
-//        public int ProductCategoryId { get; set; }
+        public int ProductId { get; set; }
+        public int ProductCategoryId { get; set; }
 
         // Navigation
         public virtual Product Product { get; set; }

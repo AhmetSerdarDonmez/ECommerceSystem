@@ -8,11 +8,11 @@ using ECommerceSystem.Domain.Entities.Orders;
 
 namespace ECommerceSystem.Domain.Entities.OrderReturns
 {
-    public class OrderReturnItem : CommonId
+    public class OrderReturnItem 
     {
-//        public int OrderReturnItemId { get; set; }
-//        public int OrderReturnId { get; set; }
-//        public int OrderId { get; set; }
+        public int OrderReturnItemId { get; set; }
+        public int OrderReturnId { get; set; }
+        public int OrderId { get; set; }
         public int ProductId { get; set; }
         public int Amount { get; set; }
         public decimal ItemPrice { get; set; }

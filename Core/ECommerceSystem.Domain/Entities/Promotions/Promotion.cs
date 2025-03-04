@@ -7,10 +7,10 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Promotions
 {
-    public class Promotion : CommonId
+    public class Promotion 
     {
 
- //       public int PromotionId { get; set; }
+        public int PromotionId { get; set; }
         public string PromotionName { get; set; }
         public string PromotionDescription { get; set; }
         public string DiscountType { get; set; }

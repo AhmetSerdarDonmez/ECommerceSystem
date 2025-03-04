@@ -9,10 +9,10 @@ using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.OrderReturns
 {
-    public class OrderReturn : CommonId
+    public class OrderReturn 
     {
- //       public int OrderReturnId { get; set; }
- //       public int? OrderId { get; set; }
+        public int OrderReturnId { get; set; }
+        public int? OrderId { get; set; }
         public DateTime ReturnDate { get; set; } = DateTime.UtcNow;
         public string ReturnReason { get; set; }
         public string ReturnStatus { get; set; } = "pending";

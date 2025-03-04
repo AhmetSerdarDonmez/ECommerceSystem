@@ -8,9 +8,9 @@ using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.Carts
 {
-    public class Cart : CommonId
+    public class Cart 
     {
- //       public int CartId { get; set; }
+        public int CartId { get; set; }
         public int? UserId { get; set; }
         public string CartType { get; set; } 
 

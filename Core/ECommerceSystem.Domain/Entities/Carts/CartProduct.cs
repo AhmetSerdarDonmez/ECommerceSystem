@@ -8,10 +8,10 @@ using ECommerceSystem.Domain.Entities.Products;
 
 namespace ECommerceSystem.Domain.Entities.Carts
 {
-    public class CartProduct : CommonId
+    public class CartProduct 
     {
-//        public int CartId { get; set; }
- //       public int ProductId { get; set; }
+        public int CartId { get; set; }
+        public int ProductId { get; set; }
         public int Amount { get; set; }
         public DateTime AddedAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;

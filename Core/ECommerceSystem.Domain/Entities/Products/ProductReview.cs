@@ -8,11 +8,11 @@ using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.Products
 {
-    public class ProductReview : CommonId
+    public class ProductReview 
     {
-//        public int ReviewId { get; set; }
- //       public int ProductId { get; set; }
-//        public int UserId { get; set; }
+        public int ReviewId { get; set; }
+        public int ProductId { get; set; }
+        public int UserId { get; set; }
         public int Rating { get; set; }
         public string ReviewText { get; set; }
         public DateTime ReviewDate { get; set; } = DateTime.UtcNow;

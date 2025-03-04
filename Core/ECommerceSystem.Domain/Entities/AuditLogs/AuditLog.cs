@@ -8,10 +8,10 @@ using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.AuditLogs
 {
-    public class AuditLog : CommonId
+    public class AuditLog 
     {
 
- //       public int LogId { get; set; }
+        public int LogId { get; set; }
 
 
         public string TableName { get; set; }

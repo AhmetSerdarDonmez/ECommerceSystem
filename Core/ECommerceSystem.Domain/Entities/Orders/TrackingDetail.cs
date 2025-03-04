@@ -8,11 +8,11 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Orders
 {
-    public class TrackingDetail : CommonId
+    public class TrackingDetail 
     {
 
- //       public int TrackingDetailId { get; set; }
- //       public int? OrderId { get; set; }
+        public int TrackingDetailId { get; set; }
+        public int? OrderId { get; set; }
         public string TrackingStatus { get; set; }
         public DateTime StatusDate { get; set; } = DateTime.UtcNow;
         public string TrackingNumber { get; set; }

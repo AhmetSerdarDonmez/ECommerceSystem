@@ -14,9 +14,9 @@ using ECommerceSystem.Domain.Entities.AuditLogs;
 
 namespace ECommerceSystem.Domain.Entities.Users
 {
-    public class User : CommonId,ICommonTimeEntity, ISoftDelete
+    public class User :ICommonTimeEntity, ISoftDelete
     {
- //       public int UserId { get; set; }
+        public int UserId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }

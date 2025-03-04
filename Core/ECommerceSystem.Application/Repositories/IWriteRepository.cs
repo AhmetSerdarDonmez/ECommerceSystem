@@ -7,7 +7,7 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface IWriteRepository<T> : IRepository<T> where T : CommonId
+    public interface IWriteRepository<T> : IRepository<T> where T : class
     {
         Task<bool> AddAsync(T model);
 

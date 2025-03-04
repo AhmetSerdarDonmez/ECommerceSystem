@@ -9,7 +9,7 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Orders
 {
-    public class OrderProduct : CommonId
+    public class OrderProduct 
     {
         
         public int amount { get; set; }

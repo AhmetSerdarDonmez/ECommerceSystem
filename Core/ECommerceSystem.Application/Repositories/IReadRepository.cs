@@ -8,7 +8,7 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface IReadRepository<T> : IRepository<T> where T : CommonId
+    public interface IReadRepository<T> : IRepository<T> where T : class
     {
         IQueryable<T> GetAll();
         IQueryable<T> GetWhere(Expression<Func<T, bool>> expression);

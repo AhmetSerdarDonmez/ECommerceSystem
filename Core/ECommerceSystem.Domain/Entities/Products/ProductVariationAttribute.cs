@@ -7,11 +7,11 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Products
 {
-    public class ProductVariationAttribute : CommonId
+    public class ProductVariationAttribute 
     {
 
-//        public int VariationId { get; set; }
-//        public int AttributeValueId { get; set; }
+        public int VariationId { get; set; }
+        public int AttributeValueId { get; set; }
 
         // Navigation
         public virtual ProductVariation Variation { get; set; }

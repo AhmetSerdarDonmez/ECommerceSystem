@@ -7,10 +7,10 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Orders
 {
-    public class Carrier : CommonId
+    public class Carrier 
     {
 
-//        public int CarrierId { get; set; }
+        public int CarrierId { get; set; }
         public string CarrierName { get; set; }
         public string CarrierCode { get; set; }
 

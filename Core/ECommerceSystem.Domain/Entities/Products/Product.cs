@@ -11,10 +11,10 @@ using ECommerceSystem.Domain.Entities.Promotions;
 
 namespace ECommerceSystem.Domain.Entities.Products
 {
-    public class Product : CommonId, ISoftDelete, ICommonTimeEntity
+    public class Product : ISoftDelete, ICommonTimeEntity
     {
- //       public int ProductId { get; set; }
- //       public string ProductName { get; set; }
+        public int ProductId { get; set; }
+        public string ProductName { get; set; }
         public decimal Price { get; set; }
         public string ProductDescription { get; set; }
         public string ImageUrl { get; set; }

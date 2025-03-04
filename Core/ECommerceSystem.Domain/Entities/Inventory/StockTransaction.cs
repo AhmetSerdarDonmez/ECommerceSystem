@@ -8,12 +8,12 @@ using ECommerceSystem.Domain.Entities.Products;
 
 namespace ECommerceSystem.Domain.Entities.Inventory
 {
-    public class StockTransaction : CommonId
+    public class StockTransaction 
     {
 
- //       public int StockTransactionId { get; set; }
- //       public int ProductId { get; set; }
-//        public int WarehouseId { get; set; }
+        public int StockTransactionId { get; set; }
+        public int ProductId { get; set; }
+        public int WarehouseId { get; set; }
         public string TransactionType { get; set; }
         public int QuantityChange { get; set; }
         public DateTime TransactionDate { get; set; } = DateTime.UtcNow;

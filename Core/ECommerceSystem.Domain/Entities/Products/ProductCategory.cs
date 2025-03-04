@@ -8,10 +8,10 @@ using ECommerceSystem.Domain.Entities.Promotions;
 
 namespace ECommerceSystem.Domain.Entities.Products
 {
-    public class ProductCategory : CommonId
+    public class ProductCategory 
     {
 
-//        public int ProductCategoryId { get; set; }
+        public int ProductCategoryId { get; set; }
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
         public int? ParentCategoryId { get; set; }

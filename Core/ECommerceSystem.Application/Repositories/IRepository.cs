@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface IRepository<T> where T : CommonId
+    public interface IRepository<T> where T : class
     {
         DbSet<T> Table { get; }
     }

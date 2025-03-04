@@ -8,9 +8,9 @@ using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.Users
 {
-    public class Role : CommonId
+    public class Role 
     {
- //       public int RoleId { get; set; }
+        public int RoleId { get; set; }
         public string RoleName { get; set; } = "active";
         public string RoleDescription { get; set; }
 

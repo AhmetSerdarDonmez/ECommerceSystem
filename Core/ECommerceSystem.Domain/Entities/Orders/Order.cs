@@ -12,9 +12,9 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Orders
 {
-    public class Order :CommonId,ICommonTimeEntity,ISoftDelete
+    public class Order :ICommonTimeEntity,ISoftDelete
     {
- //       public int OrderId { get; set; }
+        public int OrderId { get; set; }
         public string OrderNo { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
         public decimal? OrderSubtotalAmount { get; set; }

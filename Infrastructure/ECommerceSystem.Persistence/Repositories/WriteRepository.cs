@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace ECommerceSystem.Persistence.Repositories
 {
-    public class WriteRepository<T> : IWriteRepository<T> where T : CommonId
+    public class WriteRepository<T> : IWriteRepository<T> where T : class
     {
         readonly private ECommerceDbContext _contect;
 
@@ -53,7 +53,7 @@ namespace ECommerceSystem.Persistence.Repositories
 
         public async Task<bool> RemoveAsync(string id)
         {
-            T model = await Table.FirstOrDefaultAsync(data => data.Id == int.Parse(id));
+            T model = await Table.FindAsync(id);
             return Remove(model);
             
             

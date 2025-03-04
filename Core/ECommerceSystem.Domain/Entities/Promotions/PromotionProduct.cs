@@ -8,11 +8,11 @@ using ECommerceSystem.Domain.Entities.Products;
 
 namespace ECommerceSystem.Domain.Entities.Promotions
 {
-    public class PromotionProduct : CommonId
+    public class PromotionProduct 
     {
 
-//        public int PromotionId { get; set; }
-//        public int ProductId { get; set; }
+        public int PromotionId { get; set; }
+        public int ProductId { get; set; }
 
         // Navigation
         public virtual Promotion Promotion { get; set; }

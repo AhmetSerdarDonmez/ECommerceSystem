@@ -8,10 +8,10 @@ using ECommerceSystem.Domain.Entities.Orders;
 
 namespace ECommerceSystem.Domain.Entities.Inventory
 {
-    public class Warehouse : CommonId
+    public class Warehouse  
     {
 
-//        public int WarehouseId { get; set; }
+        public int WarehouseId { get; set; }
         public string WarehouseName { get; set; }
         public string WarehouseAddress { get; set; }
 

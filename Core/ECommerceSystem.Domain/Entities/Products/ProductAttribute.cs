@@ -8,9 +8,9 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Products
 {
-    public class ProductAttribute : CommonId
+    public class ProductAttribute 
     {
- //       public int AttributeId { get; set; }
+        public int AttributeId { get; set; }
         public string AttributeName { get; set; }
 
         // Navigation

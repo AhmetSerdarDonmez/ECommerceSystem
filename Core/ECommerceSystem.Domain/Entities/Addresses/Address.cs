@@ -8,12 +8,12 @@ using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.Addresses
 {
-    public class Address : CommonId
+    public class Address 
     {
-//        public int AddressId { get; set; }
+        public int AddressId { get; set; }
 
 
-//        public int? UserId { get; set; }
+        public int? UserId { get; set; }
 
         public string Country { get; set; }
         public string City { get; set; }

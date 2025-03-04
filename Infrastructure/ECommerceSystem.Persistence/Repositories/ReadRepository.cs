@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceSystem.Persistence.Repositories
 {
-    public class ReadRepository<T> : IReadRepository<T> where T : CommonId
+    public class ReadRepository<T> : IReadRepository<T> where T : class
     {
         private readonly ECommerceDbContext _context;
 
@@ -28,6 +28,6 @@ namespace ECommerceSystem.Persistence.Repositories
 
         public async Task<T> GetSingleAsync(Expression<Func<T, bool>> method) => await Table.FirstOrDefaultAsync(method);
 
-        public async Task<T> GetByIdAsync(string id) => await Table.FirstOrDefaultAsync(data => data.Id ==int.Parse(id));
+        public async Task<T> GetByIdAsync(string id) => await Table.FindAsync(id);
     }
 }
