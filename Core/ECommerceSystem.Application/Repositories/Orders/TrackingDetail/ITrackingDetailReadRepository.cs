@@ -7,7 +7,7 @@ using ECommerceSystem.Domain.Entities.Orders;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    interface ITrackingDetailReadRepository : IReadRepository<TrackingDetail>
+    public interface ITrackingDetailReadRepository : IReadRepository<TrackingDetail>
     {
     }
 }

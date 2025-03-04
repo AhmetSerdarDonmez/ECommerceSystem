@@ -7,7 +7,7 @@ using ECommerceSystem.Domain.Entities.Products;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    interface IProductReviewWriteRepository : IWriteRepository<ProductReview>
+    public interface IProductReviewWriteRepository : IWriteRepository<ProductReview>
     {
     }
 }

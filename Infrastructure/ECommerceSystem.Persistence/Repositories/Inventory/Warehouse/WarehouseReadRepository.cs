@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerceSystem.Domain.Entities.Inventory;
+using ECommerceSystem.Persistence.Contexts;
+using ECommerceSystem.Persistence.Repositories;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface WarehouseReadRepository : IReadRepository<Warehouse>
+    public class WarehouseReadRepository : ReadRepository<Warehouse> , IWarehouseReadRepository
     {
+        public WarehouseReadRepository(ECommerceDbContext context) : base(context)
+        {
+        }
     }
 }

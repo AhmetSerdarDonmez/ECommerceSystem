@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerceSystem.Domain.Entities.Products;
+using ECommerceSystem.Persistence.Contexts;
+using ECommerceSystem.Persistence.Repositories;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface ProductVariationAttributeWriteRepository : IWriteRepository<ProductVariationAttribute>
+    public class ProductVariationAttributeWriteRepository : WriteRepository<ProductVariationAttribute>, IProductVariationAttributeWriteRepository
     {
+        public ProductVariationAttributeWriteRepository(ECommerceDbContext contect) : base(contect)
+        {
+        }
     }
 }

@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerceSystem.Domain.Entities.Products;
+using ECommerceSystem.Persistence.Contexts;
+using ECommerceSystem.Persistence.Repositories;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface ProductProductCategoryReadRepository : IReadRepository<ProductCategory>
+    public class ProductProductCategoryReadRepository : ReadRepository<ProductCategory> , IProductProductCategoryReadRepository
     {
+        public ProductProductCategoryReadRepository(ECommerceDbContext context) : base(context)
+        {
+        }
     }
 }

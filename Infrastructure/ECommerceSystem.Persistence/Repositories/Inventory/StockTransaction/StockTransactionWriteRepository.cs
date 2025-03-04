@@ -5,9 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ECommerceSystem.Domain.Entities.Inventory;
+using ECommerceSystem.Persistence.Contexts;
+using ECommerceSystem.Persistence.Repositories;
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface StockTransactionWriteRepository: IWriteRepository<StockTransaction>
+    public class StockTransactionWriteRepository : WriteRepository<StockTransaction>, IStockTransactionWriteRepository
     {
+        public StockTransactionWriteRepository(ECommerceDbContext contect) : base(contect)
+        {
+        }
     }
 }

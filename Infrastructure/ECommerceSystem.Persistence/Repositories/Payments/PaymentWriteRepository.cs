@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerceSystem.Domain.Entities.Payments;
+using ECommerceSystem.Persistence.Contexts;
+using ECommerceSystem.Persistence.Repositories;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface PaymentWriteRepository:IWriteRepository<Payment>
+    public class PaymentWriteRepository:WriteRepository<Payment> , IPaymentWriteRepository
     {
+        public PaymentWriteRepository(ECommerceDbContext context) : base(context)
+        {
+        }
     }
 }

@@ -7,7 +7,7 @@ using ECommerceSystem.Domain.Entities.Inventory;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    interface IStockTransactionReadRepository : IReadRepository<StockTransaction>
+    public interface IStockTransactionReadRepository : IReadRepository<StockTransaction>
     {
     }
 }
