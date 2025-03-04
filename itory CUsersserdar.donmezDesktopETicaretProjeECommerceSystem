@@ -1,0 +1,79 @@
+[33mcommit 60c4febc10697961ceb28c3812fbed66c3c94a28[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+AuthorDate: Tue Mar 4 09:45:03 2025 +0300
+Commit:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+CommitDate: Tue Mar 4 09:45:03 2025 +0300
+
+    minor project name fix on all concreates
+
+[33mcommit 2a8002e97ad03bbe1f8a94887aecb53e9ba6643b[m
+Author:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+AuthorDate: Tue Mar 4 09:12:33 2025 +0300
+Commit:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+CommitDate: Tue Mar 4 09:12:33 2025 +0300
+
+    concreate creation for every entity
+
+[33mcommit 8d2bd2f1f2540f04e9f2d6dfd1e2e2b3ee963e78[m
+Author:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+AuthorDate: Mon Mar 3 17:13:40 2025 +0300
+Commit:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+CommitDate: Mon Mar 3 17:13:40 2025 +0300
+
+    minor fix
+
+[33mcommit 7ec45e34ef31ee15a7cf02aa9f764627454b3b32[m
+Author:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+AuthorDate: Mon Mar 3 16:10:40 2025 +0300
+Commit:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+CommitDate: Mon Mar 3 16:10:40 2025 +0300
+
+    Application interfaces and Persistance concreate classes
+
+[33mcommit cd3c46325227b8a1ec1e2e1345bbadce287cd07e[m
+Author:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+AuthorDate: Mon Mar 3 11:49:40 2025 +0300
+Commit:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+CommitDate: Mon Mar 3 11:49:40 2025 +0300
+
+    Application repositories for entities
+
+[33mcommit 3758bf01e4defab08da97f2c9f6415ba1642203f[m
+Author:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+AuthorDate: Mon Mar 3 10:27:11 2025 +0300
+Commit:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+CommitDate: Mon Mar 3 10:27:11 2025 +0300
+
+    name adjustments
+
+[33mcommit 51efe1afc50718d208751c9cad44ceabaae42182[m
+Author:     Ahmet Serdar Dönmez <serdar.donmez@yesilova.lc>
+AuthorDate: Mon Mar 3 09:59:57 2025 +0300
+Commit:     Ahmet Serdar Dönmez <serdar.donmez@yesilova.lc>
+CommitDate: Mon Mar 3 09:59:57 2025 +0300
+
+    Repositories are done
+
+[33mcommit db9035bfc2547e78134bb69df68567793698c342[m
+Author:     Ahmet Serdar Dönmez <serdar.donmez@yesilova.lc>
+AuthorDate: Mon Mar 3 08:31:47 2025 +0300
+Commit:     Ahmet Serdar Dönmez <serdar.donmez@yesilova.lc>
+CommitDate: Mon Mar 3 08:31:47 2025 +0300
+
+    comment
+
+[33mcommit 1c14c69f5ca18648d234c6fdfa383a6acbb0ca3a[m
+Author:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+AuthorDate: Fri Feb 28 10:45:44 2025 +0300
+Commit:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+CommitDate: Fri Feb 28 10:45:44 2025 +0300
+
+    Add project files.
+
+[33mcommit 851c0ef5ead05c028cbd9e807783265cdb015b61[m
+Author:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+AuthorDate: Fri Feb 28 10:45:40 2025 +0300
+Commit:     Ahmet Serdar Dönmez <a.serdar2002@gmail.com>
+CommitDate: Fri Feb 28 10:45:40 2025 +0300
+
+    Add .gitattributes, .gitignore, and LICENSE.txt.
