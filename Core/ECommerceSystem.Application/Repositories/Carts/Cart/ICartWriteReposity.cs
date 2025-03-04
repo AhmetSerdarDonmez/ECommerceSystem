@@ -7,7 +7,7 @@ using ECommerceSystem.Domain.Entities.Carts;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface ICartWriteReposity : IWriteRepository<Cart>
+    public interface ICartWriteRepository : IWriteRepository<Cart>
     {
     }
 }

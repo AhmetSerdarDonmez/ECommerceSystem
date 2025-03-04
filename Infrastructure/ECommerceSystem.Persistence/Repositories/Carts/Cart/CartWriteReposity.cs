@@ -10,9 +10,9 @@ using ECommerceSystem.Persistence.Repositories;
 
 namespace ECommerceSystem.Persistence.Repositories
 {
-    public class CartWriteReposity : WriteRepository<Cart>, ICartWriteReposity
+    public class CartWriteRepository : WriteRepository<Cart>, ICartWriteRepository
     {
-        public CartWriteReposity(ECommerceDbContext contect) : base(contect)
+        public CartWriteRepository(ECommerceDbContext contect) : base(contect)
         {
         }
     }

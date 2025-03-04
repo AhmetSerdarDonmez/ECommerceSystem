@@ -10,9 +10,9 @@ using ECommerceSystem.Persistence.Repositories;
 
 namespace ECommerceSystem.Persistence.Repositories
 {
-    public class ProductWriteRepositroy:WriteRepository<Product> , IProductWriteRepositroy
+    public class ProductWriteRepository:WriteRepository<Product> , IProductWriteRepository
     {
-        public ProductWriteRepositroy(ECommerceDbContext context) : base(context)
+        public ProductWriteRepository(ECommerceDbContext context) : base(context)
         {
         }
     }
