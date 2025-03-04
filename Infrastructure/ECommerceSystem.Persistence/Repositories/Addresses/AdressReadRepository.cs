@@ -8,7 +8,7 @@ using ECommerceSystem.Persistence.Contexts;
 using ECommerceSystem.Persistence.Repositories;
 using ECommerceSystem.Application.Repositories;
 
-namespace ECommerceSystem.Application.Repositories
+namespace ECommerceSystem.Persistence.Repositories
 {
     public class AddressReadRepository : ReadRepository<Address>, IAdressReadRepository
     {

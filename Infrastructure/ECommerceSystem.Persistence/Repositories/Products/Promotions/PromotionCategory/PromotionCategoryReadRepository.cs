@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceSystem.Application.Repositories;
 using ECommerceSystem.Domain.Entities.Promotions;
+using ECommerceSystem.Persistence.Contexts;
 
-namespace ECommerceSystem.Application.Repositories
+namespace ECommerceSystem.Persistence.Repositories
 {
-    public interface PromotionCategoryReadRepository : IReadRepository<PromotionCategory>
+    public class PromotionCategoryReadRepository : ReadRepository<PromotionCategory> , IPromotionCategoryReadRepository
     {
+        public PromotionCategoryReadRepository(ECommerceDbContext context) : base(context)
+        {
+        }
     }
 }

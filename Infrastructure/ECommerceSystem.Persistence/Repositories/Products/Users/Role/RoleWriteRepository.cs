@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECommerceSystem.Application.Repositories;
 using ECommerceSystem.Domain.Entities.Users;
+using ECommerceSystem.Persistence.Contexts;
 
-namespace ECommerceSystem.Application.Repositories
+namespace ECommerceSystem.Persistence.Repositories
 {
-    public interface RoleWriteRepository: IWriteRepository<Role>
+    public class RoleWriteRepository: WriteRepository<Role>, IRoleWriteRepository
     {
+        public RoleWriteRepository(ECommerceDbContext context) : base(context)
+        {
+        }
     }
 }

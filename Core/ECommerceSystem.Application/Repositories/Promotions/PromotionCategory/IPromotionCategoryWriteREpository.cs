@@ -7,7 +7,7 @@ using ECommerceSystem.Domain.Entities.Promotions;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface IPromotionCategoryWriteREpository : IWriteRepository<PromotionCategory>
+    public interface IPromotionCategoryWriteRepository : IWriteRepository<PromotionCategory>
     {
     }
 }
