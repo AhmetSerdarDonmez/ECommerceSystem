@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECommerceSystem.Domain.Entities.Commons
 {
-    public interface ICommonTimeEntity
+    public class CommonTime
     {
 
         public DateTime CreatedAt { get; set; }

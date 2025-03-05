@@ -11,7 +11,7 @@ using ECommerceSystem.Domain.Entities.Promotions;
 
 namespace ECommerceSystem.Domain.Entities.Products
 {
-    public class Product : ISoftDelete, ICommonTimeEntity
+    public class Product : ISoftDelete, CommonTime
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }

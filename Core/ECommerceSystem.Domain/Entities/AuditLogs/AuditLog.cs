@@ -8,7 +8,7 @@ using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.AuditLogs
 {
-    public class AuditLog 
+    public class AuditLog : CommonTime
     {
 
         public int LogId { get; set; }
@@ -21,10 +21,14 @@ namespace ECommerceSystem.Domain.Entities.AuditLogs
         public string NewValue { get; set; }
 
         public int? ChangedByUserId { get; set; }
-        public DateTime ChangedAt { get; set; } = DateTime.UtcNow;
+        public DateTime ChangedAt { get; set; }
         public string TransactionType { get; set; }
 
         // Navigation
         public virtual User ChangedByUser { get; set; }
+
+
+
+
     }
 }

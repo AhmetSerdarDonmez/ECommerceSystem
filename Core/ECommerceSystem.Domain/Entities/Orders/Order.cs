@@ -12,7 +12,7 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Orders
 {
-    public class Order :ICommonTimeEntity,ISoftDelete
+    public class Order :CommonTime,ISoftDelete
     {
         public int OrderId { get; set; }
         public string OrderNo { get; set; }
