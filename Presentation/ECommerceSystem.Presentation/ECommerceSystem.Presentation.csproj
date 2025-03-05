@@ -15,8 +15,11 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\ECommerceSystem.Application\ECommerceSystem.Application.csproj" />
     <ProjectReference Include="..\..\Core\ECommerceSystem.Domain\ECommerceSystem.Domain.csproj" />
-    <ProjectReference Include="..\..\Infrastructure\ECommerceSystem.Infrastructure\ECommerceSystem.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\ECommerceSystem.Persistence\ECommerceSystem.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>

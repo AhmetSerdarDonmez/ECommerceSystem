@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using FluentValidation.AspNetCore;
 using ECommerceSystem.Persistence.Contexts;
+using ECommerceSystem.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,10 +14,12 @@ var builder = WebApplication.CreateBuilder(args);
 // --- Configure EF Core with PostgreSQL ---
 // Here we retrieve the connection string using builder.Configuration.GetConnectionString("DefaultConnection").
 // This method looks for the "ConnectionStrings" section in your appsettings.json.
+
+
 builder.Services.AddDbContext<ECommerceDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
+builder.Services.AddPersistenceServices();
 
 
 var app = builder.Build();
