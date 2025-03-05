@@ -13,14 +13,14 @@ namespace ECommerceSystem.Persistence.Repositories
 {
     public class WriteRepository<T> : IWriteRepository<T> where T : class
     {
-        readonly private ECommerceDbContext _contect;
+        readonly private ECommerceDbContext _context;
 
         public WriteRepository(ECommerceDbContext contect)
         {
-            _contect = contect;
+            _context = contect;
         }
 
-        public DbSet<T> Table => _contect.Set<T>();
+        public DbSet<T> Table => _context.Set<T>();
 
         public async Task<bool> AddAsync(T model)
         {
@@ -61,7 +61,7 @@ namespace ECommerceSystem.Persistence.Repositories
 
         public async Task<int> SaveAsync()
         {
-           return await _contect.SaveChangesAsync();
+           return await _context.SaveChangesAsync();
         }
 
         public bool Update(T model)
