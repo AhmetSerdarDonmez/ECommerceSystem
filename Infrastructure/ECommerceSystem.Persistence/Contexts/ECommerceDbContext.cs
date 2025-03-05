@@ -20,9 +20,16 @@ namespace ECommerceSystem.Persistence.Contexts
     public class ECommerceDbContext : DbContext
     {
 
+        private readonly CommonTimeInterceptor _commonTimeInterceptor;
+
+        public ECommerceDbContext(DbContextOptions<ECommerceDbContext> options, CommonTimeInterceptor commonTimeInterceptor) : base(options)
+        {
+            _commonTimeInterceptor = commonTimeInterceptor;
+        }
+
         public ECommerceDbContext(DbContextOptions<ECommerceDbContext> options) : base(options)
         {
-
+            
         }
 
         public DbSet<User> Users { get; set; }
@@ -52,5 +59,10 @@ namespace ECommerceSystem.Persistence.Contexts
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.AddInterceptors(_commonTimeInterceptor);
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }

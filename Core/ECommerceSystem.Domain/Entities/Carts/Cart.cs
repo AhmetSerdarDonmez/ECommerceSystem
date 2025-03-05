@@ -8,7 +8,7 @@ using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.Carts
 {
-    public class Cart 
+    public class Cart : CommonTime
     {
         public int CartId { get; set; }
         public int? UserId { get; set; }

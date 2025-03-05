@@ -9,11 +9,17 @@ using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.OrderReturns
 {
-    public class OrderReturn 
+    public class OrderReturn : CommonTime
     {
         public int OrderReturnId { get; set; }
         public int? OrderId { get; set; }
-        public DateTime ReturnDate { get; set; } = DateTime.UtcNow;
+        public DateTime ReturnClaimCreatedDate 
+        { 
+            get => CreatedAt;
+            set => CreatedAt = value;
+        }
+
+        public DateTime ReturnFinishedDate { get; set; }
         public string ReturnReason { get; set; }
         public string ReturnStatus { get; set; } = "pending";
         public decimal RefundAmount { get; set; } = 0;

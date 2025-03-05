@@ -10,10 +10,11 @@ using ECommerceSystem.Application.Repositories;
 
 namespace ECommerceSystem.Persistence.Repositories
 {
-    public class AddressWriteRepository : WriteRepository<Address>, IAdressWriteRepository
+    public class AddressReadRepository : ReadRepository<Address>, IAddressReadRepository
     {
-        public AddressWriteRepository(ECommerceDbContext contect) : base(contect)
+        public AddressReadRepository(ECommerceDbContext context) : base(context)
         {
         }
     }
+
 }

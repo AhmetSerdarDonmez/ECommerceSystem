@@ -11,10 +11,17 @@ namespace ECommerceSystem.Persistence
     public static class ServiceRegistration
     {
 
-        public static void AddPersistanceServices(this IServiceCollection services)
+        public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddDbContext<ECommerceDbContext>(options => options.UseNpgsql(Configuration.ConnectionString));
-            services.AddScoped<IAdressReadRepository, AddressReadRepository>();
+            services.AddScoped<CommonTimeInterceptor>();
+
+            services.AddDbContext<ECommerceDbContext>((serviceProvider, options) =>
+            {
+                var interceptor = serviceProvider.GetRequiredService<CommonTimeInterceptor>();
+                options.UseNpgsql(Configuration.ConnectionString)
+                       .AddInterceptors(interceptor);
+            });
+            services.AddScoped<IAddressReadRepository, AddressReadRepository>();
             services.AddScoped<IAdressWriteRepository, AddressWriteRepository>();
             services.AddScoped<IAuditLogReadRepository, AuditLogReadRepository>();
             services.AddScoped<IAuditLogWriteRepository, AuditLogWriteRepository>();

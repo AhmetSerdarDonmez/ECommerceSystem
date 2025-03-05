@@ -21,7 +21,11 @@ namespace ECommerceSystem.Domain.Entities.AuditLogs
         public string NewValue { get; set; }
 
         public int? ChangedByUserId { get; set; }
-        public DateTime ChangedAt { get; set; }
+        public DateTime ChangedAt 
+        { 
+            get => UpdatedAt;
+            set => UpdatedAt = value;
+        }
         public string TransactionType { get; set; }
 
         // Navigation

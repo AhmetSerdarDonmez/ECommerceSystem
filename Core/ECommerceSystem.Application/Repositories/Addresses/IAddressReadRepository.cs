@@ -7,7 +7,7 @@ using ECommerceSystem.Domain.Entities.Addresses;
 
 namespace ECommerceSystem.Application.Repositories
 {
-    public interface IAdressWriteRepository : IWriteRepository<Address>
+    public interface IAddressReadRepository : IReadRepository<Address>
     {
     }
 }

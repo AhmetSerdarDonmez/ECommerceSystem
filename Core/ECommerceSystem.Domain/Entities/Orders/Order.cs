@@ -16,7 +16,12 @@ namespace ECommerceSystem.Domain.Entities.Orders
     {
         public int OrderId { get; set; }
         public string OrderNo { get; set; }
-        public DateTime OrderDate { get; set; } = DateTime.UtcNow;
+        public DateTime OrderDate 
+        {
+            get => CreatedAt;
+            set => CreatedAt = value;
+        } 
+
         public decimal? OrderSubtotalAmount { get; set; }
         public decimal OrderTotalAmount { get; set; }
         public int? UserId { get; set; }
@@ -27,8 +32,7 @@ namespace ECommerceSystem.Domain.Entities.Orders
         public decimal DiscountAmount { get; set; } = 0;
         public decimal TaxAmount { get; set; } = 0;
         public bool IsDeleted { get; set; } = false;
-        public DateTime CreatedAt { set; get; }
-        public DateTime UpdatedAt { set; get; }
+
         // Navigation
         public virtual User User { get; set; }
         public virtual Address ShippingAddress { get; set; }

@@ -8,7 +8,7 @@ using ECommerceSystem.Domain.Entities.Products;
 
 namespace ECommerceSystem.Domain.Entities.Inventory
 {
-    public class StockTransaction 
+    public class StockTransaction : CommonTime
     {
 
         public int StockTransactionId { get; set; }
@@ -16,7 +16,11 @@ namespace ECommerceSystem.Domain.Entities.Inventory
         public int WarehouseId { get; set; }
         public string TransactionType { get; set; }
         public int QuantityChange { get; set; }
-        public DateTime TransactionDate { get; set; } = DateTime.UtcNow;
+        public DateTime TransactionDate 
+        { 
+            get => CreatedAt;
+            set => CreatedAt = value;
+        } 
         public int? ReferenceOrderId { get; set; }
 
         // Navigation

@@ -8,14 +8,18 @@ using ECommerceSystem.Domain.Entities.Orders;
 
 namespace ECommerceSystem.Domain.Entities.Payments
 {
-    public class Payment 
+    public class Payment : CommonTime
     {
 
         public int PaymentId { get; set; }
         public int? OrderId { get; set; }
         public string PaymentMethod { get; set; }
         public decimal Amount { get; set; }
-        public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
+        public DateTime PaymentDate 
+        { 
+            get => CreatedAt;
+            set => CreatedAt = value;
+        } 
         public string PaymentStatus { get; set; }
         public string TransactionId { get; set; }
         public string PaymentGateway { get; set; }

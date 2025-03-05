@@ -7,7 +7,7 @@ using ECommerceSystem.Domain.Entities.Commons;
 
 namespace ECommerceSystem.Domain.Entities.Promotions
 {
-    public class Promotion 
+    public class Promotion : CommonTime
     {
 
         public int PromotionId { get; set; }
@@ -15,7 +15,11 @@ namespace ECommerceSystem.Domain.Entities.Promotions
         public string PromotionDescription { get; set; }
         public string DiscountType { get; set; }
         public decimal DiscountValue { get; set; }
-        public DateTime StartDate { get; set; }
+        public DateTime StartDate 
+        { 
+            get => CreatedAt;
+            set => CreatedAt = value;
+        }
         public DateTime EndDate { get; set; }
         public string CouponCode { get; set; }
         public decimal MinimumOrderAmount { get; set; } = 0;

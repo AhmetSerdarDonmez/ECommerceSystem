@@ -8,14 +8,21 @@ using ECommerceSystem.Domain.Entities.Products;
 
 namespace ECommerceSystem.Domain.Entities.Carts
 {
-    public class CartProduct 
+    public class CartProduct : CommonTime
     {
         public int CartId { get; set; }
         public int ProductId { get; set; }
         public int Amount { get; set; }
-        public DateTime AddedAt { get; set; } = DateTime.UtcNow;
-        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
-
+        public DateTime AddedAt 
+        { 
+            get => CreatedAt;
+            set => CreatedAt = value;
+        }
+        public DateTime UpdatedAt 
+        { 
+            get => UpdatedAt;
+            set => UpdatedAt = value;
+        } 
         // Navigation
         public virtual Cart Cart { get; set; }
         public virtual Product Product { get; set; }
