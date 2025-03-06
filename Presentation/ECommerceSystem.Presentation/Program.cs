@@ -44,6 +44,6 @@ app.UseRouting();
 // Set up default MVC route.
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Test}/{action=TestAction}/{id?}");
 
 app.Run();
