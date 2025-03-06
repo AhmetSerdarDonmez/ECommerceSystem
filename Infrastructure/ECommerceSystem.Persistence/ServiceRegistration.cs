@@ -10,7 +10,6 @@ namespace ECommerceSystem.Persistence
 {
     public static class ServiceRegistration
     {
-
         public static void AddPersistenceServices(this IServiceCollection services)
         {
             services.AddScoped<CommonTimeInterceptor>();
@@ -22,7 +21,7 @@ namespace ECommerceSystem.Persistence
                        .AddInterceptors(interceptor);
             });
             services.AddScoped<IAddressReadRepository, AddressReadRepository>();
-            services.AddScoped<IAdressWriteRepository, AddressWriteRepository>();
+            services.AddScoped<IAddressWriteRepository, AddressWriteRepository>();
             services.AddScoped<IAuditLogReadRepository, AuditLogReadRepository>();
             services.AddScoped<IAuditLogWriteRepository, AuditLogWriteRepository>();
             services.AddScoped<ICartReadRepository, CartReadRepository>();
@@ -33,12 +32,12 @@ namespace ECommerceSystem.Persistence
             services.AddScoped<IProductWarehouseWriteRepository, ProductWarehouseWriteRepository>();
             services.AddScoped<IStockTransactionReadRepository, StockTransactionReadRepository>();
             services.AddScoped<IStockTransactionWriteRepository, StockTransactionWriteRepository>();
-            services.AddScoped<IWarehouseReadRepository, WarehouseReadRepository>(); 
+            services.AddScoped<IWarehouseReadRepository, WarehouseReadRepository>();
             services.AddScoped<IWarehouseWriteRepository, WarehouseWriteRepository>();
             services.AddScoped<IOrderReturnReadRepository, OrderReturnReadRepository>();
             services.AddScoped<IOrderReturnWriteRepository, OrderReturnWriteRepository>();
             services.AddScoped<IOrderReturnItemReadRepository, OrderReturnItemReadRepository>();
-            services.AddScoped<IOrderReturnItemWriteRepository, OrderReturnItemWriteRepository>();  
+            services.AddScoped<IOrderReturnItemWriteRepository, OrderReturnItemWriteRepository>();
             services.AddScoped<ICarrierReadRepository, CarrierReadRepository>();
             services.AddScoped<ICarrierWriteRepository, CarrierWriteRepository>();
             services.AddScoped<IOrderReadRepository, OrderReadRepository>();
@@ -68,7 +67,7 @@ namespace ECommerceSystem.Persistence
             services.AddScoped<IProductVariationAttributeReadRepository, ProductVariationAttributeReadRepository>();
             services.AddScoped<IProductVariationAttributeWriteRepository, ProductVariationAttributeWriteRepository>();
             services.AddScoped<IPromotionReadRepository, PromotionReadRepository>();
-            services.AddScoped<IPromotionWriteRepository, PromotionWriteRepository>(); 
+            services.AddScoped<IPromotionWriteRepository, PromotionWriteRepository>();
             services.AddScoped<IPromotionCategoryReadRepository, PromotionCategoryReadRepository>();
             services.AddScoped<IPromotionCategoryWriteRepository, PromotionCategoryWriteRepository>();
             services.AddScoped<IPromotionProductReadRepository, PromotionProductReadRepository>();
@@ -78,8 +77,7 @@ namespace ECommerceSystem.Persistence
             services.AddScoped<IUserReadRepository, UserReadRepository>();
             services.AddScoped<IUserWriteRepository, UserWriteRepository>();
 
-
+            
         }
-
     }
 }

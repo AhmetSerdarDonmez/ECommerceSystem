@@ -20,7 +20,8 @@ builder.Services.AddDbContext<ECommerceDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddPersistenceServices();
-
+builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
@@ -37,8 +38,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 // Enable authentication and authorization middleware.
-app.UseAuthentication();
-app.UseAuthorization();
+//    app.UseAuthentication();
+// app.UseAuthorization();
 
 // Set up default MVC route.
 app.MapControllerRoute(
