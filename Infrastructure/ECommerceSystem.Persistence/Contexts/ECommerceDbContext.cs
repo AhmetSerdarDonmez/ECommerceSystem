@@ -59,10 +59,23 @@ namespace ECommerceSystem.Persistence.Contexts
         public DbSet<AuditLog> AuditLogs { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
 
+        public DbSet<ProductAttributeValue> productAttributeValues { get; set; }
+
+        public DbSet<ProductAttribute> productAttributes { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.AddInterceptors(_commonTimeInterceptor);
             base.OnConfiguring(optionsBuilder);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+
+            
+        }
     }
 }
+

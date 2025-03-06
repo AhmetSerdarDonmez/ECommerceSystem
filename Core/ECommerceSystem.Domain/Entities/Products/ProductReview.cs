@@ -24,8 +24,8 @@ namespace ECommerceSystem.Domain.Entities.Products
         public int? ApprovedBy { get; set; }
 
         // Navigation
-        public virtual Product Product { get; set; }
-        public virtual User User { get; set; }
+        public virtual Product Product { get; set; } = null!;
+        public virtual User User { get; set; } = null!;
         public virtual User ApprovedByUser { get; set; }
     }
 }

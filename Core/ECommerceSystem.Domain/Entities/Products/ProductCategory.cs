@@ -12,13 +12,13 @@ namespace ECommerceSystem.Domain.Entities.Products
     {
 
         public int ProductCategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public string CategoryName { get; set; } = string.Empty;
         public string CategoryDescription { get; set; }
         public int? ParentCategoryId { get; set; }
 
         // Navigation
         public virtual ProductCategory ParentCategory { get; set; }
-        public virtual ICollection<ProductProductCategory> ProductProductCategories { get; set; }
-        public virtual ICollection<PromotionCategory> PromotionCategories { get; set; } 
+        public virtual ICollection<ProductProductCategory> ProductProductCategories { get; set; } = new List<ProductProductCategory>();
+        public virtual ICollection<PromotionCategory> PromotionCategories { get; set; } = new List<PromotionCategory>();
     }
 }

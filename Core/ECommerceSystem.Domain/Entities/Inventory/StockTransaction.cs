@@ -14,7 +14,7 @@ namespace ECommerceSystem.Domain.Entities.Inventory
         public int StockTransactionId { get; set; }
         public int ProductId { get; set; }
         public int WarehouseId { get; set; }
-        public string TransactionType { get; set; }
+        public string TransactionType { get; set; } = string.Empty;
         public int QuantityChange { get; set; }
         public DateTime TransactionDate 
         { 
@@ -24,7 +24,7 @@ namespace ECommerceSystem.Domain.Entities.Inventory
         public int? ReferenceOrderId { get; set; }
 
         // Navigation
-        public virtual Product Product { get; set; }
-        public virtual Warehouse Warehouse { get; set; }
+        public virtual Product Product { get; set; } = null!;
+        public virtual Warehouse Warehouse { get; set; } = null!;
     }
 }

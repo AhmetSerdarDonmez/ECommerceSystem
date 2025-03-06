@@ -14,7 +14,10 @@ namespace ECommerceSystem.Persistence
             get
             {
                 ConfigurationManager configurationManager = new ConfigurationManager();
-                configurationManager.SetBasePath("../../Presentation/ECommerceSystem.Presentation");
+                string absolutePath = Path.GetFullPath("../../Presentation/ECommerceSystem.Presentation");
+                configurationManager.SetBasePath(absolutePath);
+                //configurationManager.SetBasePath("../../Presentation/ECommerceSystem.Presentation");
+
                 configurationManager.AddJsonFile("appsettings.json");
 
                 return configurationManager.GetConnectionString("DefaultConnection");

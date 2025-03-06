@@ -13,7 +13,7 @@ namespace ECommerceSystem.Domain.Entities.Products
         public int ProductCategoryId { get; set; }
 
         // Navigation
-        public virtual Product Product { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
+        public virtual Product Product { get; set; } = null!;
+        public virtual ProductCategory ProductCategory { get; set; } = null!;
     }
 }

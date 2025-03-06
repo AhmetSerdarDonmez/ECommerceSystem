@@ -15,7 +15,7 @@ namespace ECommerceSystem.Domain.Entities.Orders
     public class Order :CommonTime,ISoftDelete
     {
         public int OrderId { get; set; }
-        public string OrderNo { get; set; }
+        public string OrderNo { get; set; } = string.Empty;
         public DateTime OrderDate 
         {
             get => CreatedAt;
@@ -37,10 +37,10 @@ namespace ECommerceSystem.Domain.Entities.Orders
         public virtual User User { get; set; }
         public virtual Address ShippingAddress { get; set; }
         public virtual Address BillingAddress { get; set; }
-        public virtual ICollection<OrderProduct> OrderProducts { get; set; }
-        public virtual ICollection<Payment> Payments { get; set; }
-        public virtual ICollection<TrackingDetail> TrackingDetails { get; set; }
-        public virtual ICollection<OrderReturn> OrderReturns { get; set; }
+        public virtual ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
+        public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
+        public virtual ICollection<TrackingDetail> TrackingDetails { get; set; } = new List<TrackingDetail>();
+        public virtual ICollection<OrderReturn> OrderReturns { get; set; } = new List<OrderReturn>();
 
 
         

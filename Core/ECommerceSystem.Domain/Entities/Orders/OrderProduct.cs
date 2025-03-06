@@ -11,16 +11,22 @@ namespace ECommerceSystem.Domain.Entities.Orders
 {
     public class OrderProduct 
     {
-        
-        public int amount { get; set; }
-        public decimal item_price { get; set; }
+        public int ProductId { get; set; }
+
+        public int OrderId { get; set; }
+
+        public int Amount { get; set; }
+        public decimal ItemPrice { get; set; }
+
+        public int WarehouseId { get; set; }
 
 
-
+        public Order Order { get; set; } = null!; 
+        public Product Product { get; set; } = null!; 
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Product> Products { get; set; }
 
-        public virtual ICollection<Warehouse> Warehouses { get; set; }
+        public virtual Warehouse Warehouses { get; set; }
 
     }
 }

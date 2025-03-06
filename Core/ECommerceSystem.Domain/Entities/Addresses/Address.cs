@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECommerceSystem.Domain.Entities.Commons;
+using ECommerceSystem.Domain.Entities.Orders;
 using ECommerceSystem.Domain.Entities.Users;
 
 namespace ECommerceSystem.Domain.Entities.Addresses
@@ -18,13 +19,16 @@ namespace ECommerceSystem.Domain.Entities.Addresses
         public string Country { get; set; }
         public string City { get; set; }
         public string District { get; set; }
-        public string AddressLine1 { get; set; }
-        public string AddressLine2 { get; set; }
-        public string PostalCode { get; set; }
+        public string? AddressLine1 { get; set; }
+        public string? AddressLine2 { get; set; }
+        public string? PostalCode { get; set; }
         public bool IsBillingAddress { get; set; } = false;
         public bool IsShippingAddress { get; set; } = false;
 
         // Navigation
         public virtual Users.User User { get; set; }
+        public ICollection<Order> BillingOrders { get; set; } = new List<Order>();
+        public ICollection<Order> ShippingOrders { get; set; } = new List<Order>();
+
     }
 }

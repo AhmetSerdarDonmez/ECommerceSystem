@@ -15,6 +15,6 @@ namespace ECommerceSystem.Domain.Entities.Users
         public string RoleDescription { get; set; }
 
         // Navigation
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; } = new List<User>();
     }
 }

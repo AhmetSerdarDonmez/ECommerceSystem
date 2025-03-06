@@ -14,8 +14,8 @@ namespace ECommerceSystem.Domain.Entities.Products
         public int AttributeValueId { get; set; }
 
         // Navigation
-        public virtual ProductVariation Variation { get; set; }
-        public virtual ProductAttributeValue AttributeValue { get; set; }
+        public virtual ProductVariation Variation { get; set; } = null!;
+        public virtual ProductAttributeValue AttributeValue { get; set; } = null!;
 
     }
 }

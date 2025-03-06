@@ -22,15 +22,15 @@ namespace ECommerceSystem.Domain.Entities.Products
 
 
         // Navigation
-        public virtual ICollection<CartProduct> CartProducts { get; set; }
-        public virtual ICollection<OrderProduct> OrderProducts { get; set; }
-        public virtual ICollection<ProductReview> ProductReviews { get; set; }
-        public virtual ICollection<ProductProductCategory> ProductProductCategories { get; set; }
-        public virtual ICollection<ProductVariation> ProductVariations { get; set; }
-        public virtual ICollection<ProductWarehouse> ProductWarehouses { get; set; }
-        public virtual ICollection<ProductImage> ProductImages { get; set; }
-        public virtual ICollection<PromotionProduct> PromotionProducts { get; set; }
-        public virtual ICollection<StockTransaction> StockTransactions { get; set; }
+        public virtual ICollection<CartProduct> CartProducts { get; set; } = new List<CartProduct>();
+        public virtual ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
+        public virtual ICollection<ProductReview> ProductReviews { get; set; } = new List<ProductReview>();
+        public virtual ICollection<ProductProductCategory> ProductProductCategories { get; set; } = new List<ProductProductCategory>();
+        public virtual ICollection<ProductVariation> ProductVariations { get; set; } = new List<ProductVariation>();
+        public virtual ICollection<ProductWarehouse> ProductWarehouses { get; set; } = new List<ProductWarehouse>();
+        public virtual ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
+        public virtual ICollection<PromotionProduct> PromotionProducts { get; set; } = new List<PromotionProduct>();
+        public virtual ICollection<StockTransaction> StockTransactions { get; set; } = new List<StockTransaction>();
 
     }
 }

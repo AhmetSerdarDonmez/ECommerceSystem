@@ -11,9 +11,7 @@ namespace ECommerceSystem.Domain.Entities.AuditLogs
     public class AuditLog : CommonTime
     {
 
-        public int LogId { get; set; }
-
-
+        public int LogId { get; set; } 
         public string TableName { get; set; }
         public int RecordId { get; set; }
         public string ColumnName { get; set; }

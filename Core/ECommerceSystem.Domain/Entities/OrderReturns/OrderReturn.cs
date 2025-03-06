@@ -19,7 +19,7 @@ namespace ECommerceSystem.Domain.Entities.OrderReturns
             set => CreatedAt = value;
         }
 
-        public DateTime ReturnFinishedDate { get; set; }
+        public DateTime ReturnDate { get; set; }
         public string ReturnReason { get; set; }
         public string ReturnStatus { get; set; } = "pending";
         public decimal RefundAmount { get; set; } = 0;
@@ -29,6 +29,6 @@ namespace ECommerceSystem.Domain.Entities.OrderReturns
         
         public virtual Order Order { get; set; }
         public virtual User ProcessedByUser { get; set; }
-        public virtual ICollection<OrderReturnItem> OrderReturnItems { get; set; }
+        public virtual ICollection<OrderReturnItem> OrderReturnItems { get; set; } = new List<OrderReturnItem>();
     }
 }

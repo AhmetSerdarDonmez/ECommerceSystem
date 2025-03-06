@@ -16,9 +16,10 @@ namespace ECommerceSystem.Domain.Entities.OrderReturns
         public int ProductId { get; set; }
         public int Amount { get; set; }
         public decimal ItemPrice { get; set; }
-        public string ReturnNote { get; set; }
+        public string? ReturnNote { get; set; }
 
         // Navigation
-        public virtual OrderReturn OrderReturn { get; set; }
+        public virtual OrderReturn OrderReturn { get; set; } = null!;
+        public virtual OrderProduct OrderProduct { get; set; } = null!;
     }
 }

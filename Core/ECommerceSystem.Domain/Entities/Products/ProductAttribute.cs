@@ -10,11 +10,12 @@ namespace ECommerceSystem.Domain.Entities.Products
 {
     public class ProductAttribute 
     {
+        
         public int AttributeId { get; set; }
-        public string AttributeName { get; set; }
+        public string AttributeName { get; set; } = string.Empty;
 
         // Navigation
-        public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
+        public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; } = new List<ProductAttributeValue>();
 
     }
 }

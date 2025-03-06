@@ -16,7 +16,9 @@ namespace ECommerceSystem.Domain.Entities.Inventory
         public int StockQuantity { get; set; }
 
         // Navigation
-        public virtual Product Product { get; set; }
-        public virtual Warehouse Warehouse { get; set; }
+        public virtual Product Product { get; set; } = null!;
+        public virtual Warehouse Warehouse { get; set; } = null!;
+
+        public ICollection<StockTransaction> StockTransactions { get; set; }= new List<StockTransaction>();
     }
 }

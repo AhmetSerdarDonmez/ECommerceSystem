@@ -16,24 +16,24 @@ namespace ECommerceSystem.Domain.Entities.Users
 {
     public class User :CommonTime, ISoftDelete
     {
+        public int RoleId { get; set; }
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
         public string PhoneNumber { get; set; }
 
-//        public int? RoleId { get; set; }
         public bool IsDeleted { get; set; } = false;
 
 
 
         // Navigation
-        public virtual Role Role { get; set; }
-        public virtual ICollection<Address> Addresses { get; set; }
-        public virtual ICollection<Cart> Carts { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<ProductReview> ProductReviews { get; set; }
-        public virtual ICollection<OrderReturn> OrderReturnsProcessed { get; set; }
-        public virtual ICollection<AuditLog> AuditLogs { get; set; }
+        public virtual Role? Role { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; } = new List<Address>();
+        public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
+        public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+        public virtual ICollection<ProductReview> ProductReviews { get; set; } = new List<ProductReview>();
+        public virtual ICollection<OrderReturn> OrderReturnsProcessed { get; set; } = new List<OrderReturn>();
+        public virtual ICollection<AuditLog> AuditLogs { get; set; } = new List<AuditLog>();
     }
 }

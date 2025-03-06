@@ -15,8 +15,8 @@ namespace ECommerceSystem.Domain.Entities.Promotions
         public int ProductCategoryId { get; set; }
 
         // Navigation
-        public virtual Promotion Promotion { get; set; }
-        public virtual ProductCategory ProductCategory { get; set; }
+        public virtual Promotion Promotion { get; set; } = null!;       
+        public virtual ProductCategory ProductCategory { get; set; } = null!;
 
     }
 }
