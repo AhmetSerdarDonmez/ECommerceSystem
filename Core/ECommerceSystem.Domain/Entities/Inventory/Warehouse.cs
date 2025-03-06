@@ -18,6 +18,6 @@ namespace ECommerceSystem.Domain.Entities.Inventory
 
         public virtual ICollection<ProductWarehouse> ProductWarehouses { get; set; } = new List<ProductWarehouse>();
         public virtual ICollection<StockTransaction> StockTransactions { get; set; } = new List<StockTransaction>();
-        public virtual ICollection<OrderProduct> OrderProduct { get; set; } = new List<OrderProduct>();
+        public virtual ICollection<OrderProduct> OrderProducts { get; set; } = new List<OrderProduct>();
     }
 }

@@ -472,7 +472,7 @@ namespace ECommerceSystem.Persistence.Contexts
                       .HasForeignKey(e => e.VariationId)
                       .OnDelete(DeleteBehavior.Cascade)
                       .HasConstraintName("fk_product_variation_attributes_variation");
-                entity.HasOne(e => e.AttributeValue)
+                entity.HasOne(e => e.ProductAttributeValue)
                       .WithMany(av => av.ProductVariationAttributes)
                       .HasForeignKey(e => e.AttributeValueId)
                       .OnDelete(DeleteBehavior.Cascade)

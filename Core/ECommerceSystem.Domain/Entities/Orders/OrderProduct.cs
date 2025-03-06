@@ -26,7 +26,7 @@ namespace ECommerceSystem.Domain.Entities.Orders
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
         public virtual ICollection<Product> Products { get; set; }
 
-        public virtual Warehouse Warehouses { get; set; } 
+        public virtual Warehouse Warehouse { get; set; } 
 
     }
 }
