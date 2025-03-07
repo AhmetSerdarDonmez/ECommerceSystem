@@ -10,6 +10,8 @@ using ECommerceSystem.Domain.Entities.Orders;
 using ECommerceSystem.Domain.Entities.Products;
 using ECommerceSystem.Domain.Entities.OrderReturns;
 using ECommerceSystem.Domain.Entities.AuditLogs;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace ECommerceSystem.Domain.Entities.Users
@@ -17,6 +19,9 @@ namespace ECommerceSystem.Domain.Entities.Users
     public class User :CommonTime, ISoftDelete
     {
         public int RoleId { get; set; }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
