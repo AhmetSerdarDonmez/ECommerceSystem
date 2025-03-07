@@ -29,7 +29,7 @@ namespace ECommerceSystem.Presentation.Controllers
         public async Task<IActionResult> TestAction() // Changed return type to Task<IActionResult>
         {
             await _userWriteRepository.AddAsync(new()
-            { UserId = 1, UserName = "Ahmet", Email = "a.serdar", PasswordHash = "123", PhoneNumber = "544", IsDeleted = false });
+            { UserId = 1, UserName = "Ahmet", Email = "a.serdar", PasswordHash = "123", PhoneNumber = "544", IsDeleted = false , RoleId = 1 });
             var count = await _userWriteRepository.SaveAsync();
 
             return Ok(new { message = "User added successfully", rowsAffected = count }); // Return Ok with data
