@@ -14,7 +14,9 @@ namespace ECommerceSystem.Persistence
             get
             {
                 ConfigurationManager configurationManager = new ConfigurationManager();
-                string absolutePath = Path.GetFullPath("../../Presentation/ECommerceSystem.Presentation");
+ //              string absolutePath = Path.GetFullPath("../../Presentation/ECommerceSystem.Presentation");
+                 string absolutePath = Path.GetFullPath("../../API/ECommerceSystem.API");
+
                 configurationManager.SetBasePath(absolutePath);
                 //configurationManager.SetBasePath("../../Presentation/ECommerceSystem.Presentation");
 

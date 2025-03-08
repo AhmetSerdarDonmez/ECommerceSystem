@@ -29,7 +29,7 @@ namespace ECommerceSystem.API.Controllers
         public async Task<IActionResult> TestAction()
         {
             await _userWriteRepository.AddAsync(new()
-            {UserName = "Mehmet", Email = "m.el", PasswordHash = "584", PhoneNumber = "574", IsDeleted = false , RoleId = 1 });
+            {UserName = "Halil", Email = "Hacito", PasswordHash = "432", PhoneNumber = "552", IsDeleted = false , RoleId = 1 });
             var count = await _userWriteRepository.SaveAsync();
 
             return Ok(new { message = "User added successfully", rowsAffected = count });
