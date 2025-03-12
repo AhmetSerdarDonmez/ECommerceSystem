@@ -27,7 +27,7 @@ namespace ECommerceSystem.API.Controllers
 
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("get-user-by-id/{id}")]
         public async Task<IActionResult> GetUserByIdAction(string id)
         {
             var user = await _userReadRepository.GetByIdAsync(id);
@@ -98,7 +98,7 @@ namespace ECommerceSystem.API.Controllers
             return Ok(user);
         }
 
-        [HttpDelete("remove-range-user")]
+        [HttpDelete("remove-range-user")]           
 
         public async Task<IActionResult> RemoveRangeOfUsersAction([FromBody] List<User> users)
         {
