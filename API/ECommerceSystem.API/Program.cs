@@ -4,6 +4,9 @@ using System.Text;
 // using FluentValidation.AspNetCore;
 using ECommerceSystem.Persistence.Contexts;
 using ECommerceSystem.Persistence;
+using Microsoft.Extensions.DependencyInjection;
+using ECommerceSystem.Infrastructure.Services;
+using ECommerceSystem.Infrastructure;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +33,7 @@ builder.Services.AddDbContext<ECommerceDbContext>(options =>
 
 
 // Add services to the container.
+builder.Services.AddInfrastructureServices();
 builder.Services.AddPersistenceServices();
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
