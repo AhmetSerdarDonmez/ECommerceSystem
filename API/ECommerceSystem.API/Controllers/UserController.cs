@@ -44,7 +44,7 @@ namespace ECommerceSystem.API.Controllers
 
         public async Task<IActionResult> AddSingleUserAction([FromBody]User user)
         {
-
+            
             var isAdded =await _userWriteRepository.AddAsync(user);
 
             if (!isAdded)
