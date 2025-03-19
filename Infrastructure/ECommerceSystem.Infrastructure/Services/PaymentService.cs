@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ECommerceSystem.Application;
+using ECommerceSystem.Application.Services;
 using ECommerceSystem.Domain;
 using Microsoft.Extensions.Configuration;
 using Stripe;

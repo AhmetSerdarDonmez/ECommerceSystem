@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ECommerceSystem.Application;
+using ECommerceSystem.Application.Services;
 using ECommerceSystem.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,6 +14,8 @@ namespace ECommerceSystem.Infrastructure
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
             services.AddScoped<IPaymentService , PaymentService>();
+            services.AddScoped<ITokenService, JwtTokenService>();
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
         }
     }

@@ -9,5 +9,6 @@ namespace ECommerceSystem.Application.Repositories
 {
     public interface IUserReadRepository : IReadRepository<User>
     {
+
     }
 }
