@@ -11,7 +11,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace ECommerceSystem.Infrastructure.Services
 {
-    public class JwtTokenService : ITokenService
+    public class JwtTokenService : IJwtTokenService
     {
         private readonly IConfiguration _configuration;
 
@@ -20,7 +20,7 @@ namespace ECommerceSystem.Infrastructure.Services
             _configuration = configuration;
         }
 
-        public string GenerateToken(string userId, string username, List<string> roles)
+        public string GenerateToken(string userId, string username, string roleId)
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
             var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings["SecretKey"]!));
@@ -37,13 +37,11 @@ namespace ECommerceSystem.Infrastructure.Services
             var claims = new List<Claim>
         {
             new Claim(ClaimTypes.NameIdentifier, userId),
-            new Claim(ClaimTypes.Name, username)
+            new Claim(ClaimTypes.Name, username),
+            new Claim(ClaimTypes.Role, roleId)
         };
 
-            foreach (var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
-            }
+                        
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {

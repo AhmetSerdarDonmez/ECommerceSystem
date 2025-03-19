@@ -14,7 +14,7 @@ namespace ECommerceSystem.Infrastructure
         public static void AddInfrastructureServices(this IServiceCollection services)
         {
             services.AddScoped<IPaymentService , PaymentService>();
-            services.AddScoped<ITokenService, JwtTokenService>();
+            services.AddScoped<IJwtTokenService, JwtTokenService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
 
         }

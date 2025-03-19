@@ -13,9 +13,9 @@ namespace ECommerceSystem.Infrastructure.Services
     public class AuthenticationService : IAuthenticationService
     {
         private readonly IUserReadRepository _userRepository;
-        private readonly ITokenService _tokenService;
+        private readonly IJwtTokenService _tokenService;
 
-        public AuthenticationService(IUserReadRepository userRepository, ITokenService tokenService)
+        public AuthenticationService(IUserReadRepository userRepository, IJwtTokenService tokenService)
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
@@ -33,11 +33,10 @@ namespace ECommerceSystem.Infrastructure.Services
             }
 
             // Kullanıcının rol bilgisini string'e çeviriyoruz
-            var roleId = user.Role != null ? user.Role.RoleId : 1;
-            var roles = new List<string> { roleId.ToString() };
+            var roleId = user.Role.RoleId != null ? user.Role.RoleId:0;
 
             // Token üretimi: Kullanıcı id, kullanıcı adı ve roller parametre olarak veriliyor
-            var token = _tokenService.GenerateToken(user.UserId.ToString(), user.UserName, roles);
+            var token = _tokenService.GenerateToken(user.UserId.ToString(), user.UserName, roleId.ToString());
             return (true, token);
         }
 

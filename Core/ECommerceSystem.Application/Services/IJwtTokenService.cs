@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ECommerceSystem.Application.Services
 {
-    public interface ITokenService
+    public interface IJwtTokenService
     {
-        string GenerateToken(string userId, string username, List<string> roles);
+        string GenerateToken(string userId, string username, string roleId);
 
     }
 }
