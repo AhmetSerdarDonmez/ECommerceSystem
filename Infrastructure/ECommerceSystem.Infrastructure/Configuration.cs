@@ -4,11 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication; // Add this using directive
+using Microsoft.AspNetCore.Authentication.JwtBearer; // Add this using directive
+using Microsoft.IdentityModel.Tokens;
+using System.IO; // Add this for Path
+
 
 namespace ECommerceSystem.Infrastructure
 {
-    class Configuration
+    static class Configuration
     {
+        /*
+        public static void ConfigureJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+        {
+            var jwtSettings = configuration.GetSection("JwtSettings");
+            var secretKey = Encoding.ASCII.GetBytes(jwtSettings["Secret"]!);
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false; // Set to true in production over HTTPS
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(secretKey),
+                    ValidateIssuer = true,
+                    ValidIssuer = jwtSettings["Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = jwtSettings["Audience"],
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero // Optional: Adjust if needed
+                };
+            });
+        }
+        */
+
+
         public static string ConnectionString
 
         {

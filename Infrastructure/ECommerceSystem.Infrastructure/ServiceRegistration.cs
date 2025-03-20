@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ECommerceSystem.Application.Services;
 using ECommerceSystem.Infrastructure.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ECommerceSystem.Infrastructure
@@ -16,6 +17,7 @@ namespace ECommerceSystem.Infrastructure
             services.AddScoped<IPaymentService , PaymentService>();
             services.AddScoped<IJwtTokenService, JwtTokenService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            
 
         }
     }

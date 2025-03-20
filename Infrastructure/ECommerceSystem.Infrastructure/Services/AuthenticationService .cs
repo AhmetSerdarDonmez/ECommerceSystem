@@ -23,8 +23,10 @@ namespace ECommerceSystem.Infrastructure.Services
 
         public async Task<(bool Success, string? Token)> AuthenticateAsync(string username, string password)
         {
-            // Asenkron olarak kullanıcıyı çekiyoruz
-            var user = await _userRepository.GetWhere(u => u.UserName == username).FirstOrDefaultAsync();
+            // Asenkron olarak kullanıcıyı çekiyoruz ve Role bilgisini de yüklüyoruz
+            var user = await _userRepository.GetWhere(u => u.UserName == username)
+                                            .Include(u => u.Role) // This line is crucial for loading the Role
+                                            .FirstOrDefaultAsync();
 
             // Eğer kullanıcı bulunamazsa veya şifre doğrulanamazsa false döner
             if (user == null || !VerifyPassword(password, user.PasswordHash))
@@ -33,7 +35,7 @@ namespace ECommerceSystem.Infrastructure.Services
             }
 
             // Kullanıcının rol bilgisini string'e çeviriyoruz
-            var roleId = user.Role.RoleId != null ? user.Role.RoleId:0;
+            var roleId = user.Role?.RoleId ?? 1; // Use null-conditional operator to avoid potential null exception
 
             // Token üretimi: Kullanıcı id, kullanıcı adı ve roller parametre olarak veriliyor
             var token = _tokenService.GenerateToken(user.UserId.ToString(), user.UserName, roleId.ToString());

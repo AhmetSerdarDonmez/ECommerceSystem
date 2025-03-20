@@ -23,11 +23,11 @@ namespace ECommerceSystem.Infrastructure.Services
         public string GenerateToken(string userId, string username, string roleId)
         {
             var jwtSettings = _configuration.GetSection("JwtSettings");
-            var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings["SecretKey"]!));
+            var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtSettings["Secret"]!));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             // Access the value directly from the section and parse it to an integer
-            if (!int.TryParse(jwtSettings["TokenLifetimeInMinutes"], out int tokenLifetimeInMinutes))
+            if (!int.TryParse(jwtSettings["ExpiryInMinutes"], out int tokenLifetimeInMinutes))
             {
                 // Handle the case where the configuration value is missing or not a valid integer
                 throw new Exception("Invalid or missing TokenLifetimeInMinutes configuration.");
