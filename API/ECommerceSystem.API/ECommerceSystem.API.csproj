@@ -22,4 +22,8 @@
     <ProjectReference Include="..\..\Infrastructure\ECommerceSystem.Persistence\ECommerceSystem.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>

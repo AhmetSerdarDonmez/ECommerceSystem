@@ -42,11 +42,13 @@ namespace ECommerceSystem.API.Controllers
         }
 
         [HttpGet("admin/{id}")] // Route with an 'id' parameter
-        [Authorize(Policy = "AdminLoginWithId")]
         public async Task<IActionResult> GetAdminData(int id)
         {
+
+
             // Check if the current user has roleId = 1 (Admin)
-            var roleIdClaim = User.FindFirst("roleId")?.Value;
+            var roleIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value;
+            ;
             if (roleIdClaim != null && int.TryParse(roleIdClaim, out int roleId) && roleId == 1)
             {
                 var userDto = await _userService.GetByIdAsync(id.ToString());

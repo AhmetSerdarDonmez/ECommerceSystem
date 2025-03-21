@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ECommerceSystem.Application.Repositories;
 using ECommerceSystem.Domain.Entities.Users;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace ECommerceSystem.API.Controllers
@@ -19,6 +20,7 @@ namespace ECommerceSystem.API.Controllers
         }
 
         [HttpGet("get-all-users")]
+        [Authorize]
         public IActionResult GetAllUsersAction()
         {
           
@@ -39,6 +41,9 @@ namespace ECommerceSystem.API.Controllers
 
                 return Ok(user);
         }
+
+
+
 
         [HttpPost("add-single-user")]
 
@@ -123,6 +128,8 @@ namespace ECommerceSystem.API.Controllers
             await _userWriteRepository.SaveAsync();
             return Ok(id);
         }
+
+
 
 
 
