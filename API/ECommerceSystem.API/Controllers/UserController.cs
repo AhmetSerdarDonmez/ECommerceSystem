@@ -21,9 +21,13 @@ namespace ECommerceSystem.API.Controllers
 
         [HttpGet("get-all-users")]
         [Authorize]
+
         public IActionResult GetAllUsersAction()
         {
-          
+            if(User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value != "1")
+            {
+                return Unauthorized("You do not have the required role to access this resource.");
+            }
             var users = _userReadRepository.GetAll().ToList();
             return Ok(users);
 
