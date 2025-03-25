@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="credentials.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="JWT" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.14" />
     <PackageReference Include="Npgsql" Version="9.0.3" />
@@ -24,6 +28,10 @@
 
   <ItemGroup>
     <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="credentials.json" />
   </ItemGroup>
 
 </Project>

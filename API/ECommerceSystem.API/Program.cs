@@ -94,7 +94,7 @@ builder.Services.AddDbContext<ECommerceDbContext>(options =>
 
 
 // Add services to the container.
-builder.Services.AddInfrastructureServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceServices();
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
