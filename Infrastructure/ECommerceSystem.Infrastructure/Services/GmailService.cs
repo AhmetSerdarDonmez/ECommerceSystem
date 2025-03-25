@@ -10,11 +10,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace ECommerceSystem.Infrastructure.Services
 {
-    public class GmailApiService : IGmailService // Renamed
+    public class GmailService : IGmailService // Renamed
     {
         private readonly Google.Apis.Gmail.v1.GmailService _gmailService; // Fully qualified
 
-        public GmailApiService(IConfiguration configuration)
+        public GmailService(IConfiguration configuration)
         {
             var clientId = configuration["GmailApi:ClientId"];
             var clientSecret = configuration["GmailApi:ClientSecret"];
