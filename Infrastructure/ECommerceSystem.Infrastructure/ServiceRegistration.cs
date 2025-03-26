@@ -1,6 +1,5 @@
 ﻿using ECommerceSystem.Application.Services;
 using ECommerceSystem.Infrastructure.Services;
-using Infrastructure.UseCases;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,8 +19,7 @@ namespace ECommerceSystem.Infrastructure
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<IMessagingService, RabbitMqService>();
             services.AddHostedService<RabbitMqConsumerService>();
-            services.AddScoped<IGmailService,GmailService>();
-            services.AddScoped<GetUserLabelsHandler>();
+
             
             
 
