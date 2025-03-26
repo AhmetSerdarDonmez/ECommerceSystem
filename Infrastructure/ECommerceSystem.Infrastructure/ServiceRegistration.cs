@@ -17,11 +17,11 @@ namespace ECommerceSystem.Infrastructure
             services.AddScoped<IPaymentService , PaymentService>();
             services.AddScoped<IJwtTokenService, JwtTokenService>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
-            services.AddSingleton<IMessagingService, RabbitMqService>();
             services.AddHostedService<RabbitMqConsumerService>();
+            services.AddTransient<IEMailService, EMailService>();
 
-            
-            
+
+
 
 
         }
