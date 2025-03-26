@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Mail;
-using System.Text;
+﻿using System.Net;
 using System.Threading.Tasks;
-using ECommerceSystem.Application.Services;
+using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.Extensions.Configuration;
+using MimeKit;
+using Google.Apis.Auth.OAuth2;
+using ECommerceSystem.Application.Services;
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Responses;
 
 namespace ECommerceSystem.Infrastructure.Services
 {
@@ -17,34 +19,59 @@ namespace ECommerceSystem.Infrastructure.Services
         {
             _configuration = configuration;
         }
+
         public async Task<bool> SendEmailAsync(string receptor, string subject, string body)
         {
             try
             {
+                // Get OAuth credentials
+                var clientId = _configuration["EmailSettings:OAuthClientId"];
+                var clientSecret = _configuration["EmailSettings:OAuthClientSecret"];
+                var refreshToken = _configuration["EmailSettings:OAuthRefreshToken"];
+                var senderEmail = _configuration["EmailSettings:Email"]; // Ensure this exists in appsettings.json
 
+                // Create Google credentials
+                var clientSecrets = new ClientSecrets
+                {
+                    ClientId = clientId,
+                    ClientSecret = clientSecret
+                };
 
-                var email = _configuration.GetValue<string>("EmailSettings:Email");
-                var password = _configuration.GetValue<string>("EmailSettings:Password");
-                var host = _configuration.GetValue<string>("EmailSettings:Host");
-                var port = _configuration.GetValue<int>("EmailSettings:Port");
+                var credential = new UserCredential(
+                    new GoogleAuthorizationCodeFlow(new GoogleAuthorizationCodeFlow.Initializer
+                    {
+                        ClientSecrets = clientSecrets
+                    }),
+                    "user",
+                    new TokenResponse { RefreshToken = refreshToken });
 
-                var smpClient = new SmtpClient(host, port);
-                smpClient.EnableSsl = true;
-                smpClient.UseDefaultCredentials = false;
+                // Get access token
+                var accessToken = await credential.GetAccessTokenForRequestAsync();
 
-                smpClient.Credentials = new System.Net.NetworkCredential(email, password);
+                // Create email message
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress("", senderEmail));
+                message.To.Add(new MailboxAddress("", receptor));
+                message.Subject = subject;
+                message.Body = new TextPart("plain") { Text = body };
 
-                var message = new MailMessage(email, receptor, subject, body);
-                await smpClient.SendMailAsync(message);
+                // Send via SMTP with OAuth
+                using var smtp = new SmtpClient();
+                await smtp.ConnectAsync(
+                    _configuration["EmailSettings:Host"],
+                    int.Parse(_configuration["EmailSettings:Port"]),
+                    SecureSocketOptions.StartTls);
+
+                await smtp.AuthenticateAsync(new SaslMechanismOAuth2(senderEmail, accessToken));
+                await smtp.SendAsync(message);
+                await smtp.DisconnectAsync(true);
+
                 return true;
             }
             catch
             {
                 return false;
             }
-            
-
-
         }
     }
 }
