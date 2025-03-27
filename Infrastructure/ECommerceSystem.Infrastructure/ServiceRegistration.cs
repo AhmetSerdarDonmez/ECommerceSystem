@@ -1,5 +1,7 @@
 ﻿using ECommerceSystem.Application.Services;
 using ECommerceSystem.Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +13,18 @@ namespace ECommerceSystem.Infrastructure
         {
 
             services.Configure<RabbitMqSettings>(configuration.GetSection("RabbitMq"));
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+            }).AddCookie()
+            .AddGoogle(options =>
+            {
+                options.ClientId = configuration["EmailSettings:OAuthClientId"]; ;
+                options.ClientSecret = configuration["EmailSettings:OAuthClientSecret"];
+            });
 
 
 

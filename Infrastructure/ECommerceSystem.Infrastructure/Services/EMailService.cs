@@ -50,10 +50,44 @@ namespace ECommerceSystem.Infrastructure.Services
 
                 // Create email message
                 var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("", senderEmail));
+                message.From.Add(new MailboxAddress("ECommerceSite", senderEmail));
                 message.To.Add(new MailboxAddress("", receptor));
                 message.Subject = subject;
-                message.Body = new TextPart("plain") { Text = body };
+
+                // Inline CSS styling added to HTML email body
+                var htmlBody = $@"
+<html>
+<head>
+  <style>
+    body {{
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }}
+    .container {{
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }}
+    h1 {{
+      color: #333333;
+    }}
+    p {{
+      color: #666666;
+      line-height: 1.5;
+    }}
+  </style>
+</head>
+<body>
+  <div class='container'>
+    {body}
+  </div>
+</body>
+</html>";
+
+                // Note: Changed TextPart from "plain" to "html" only for styling purposes.
+                message.Body = new TextPart("html") { Text = htmlBody };
 
                 // Send via SMTP with OAuth
                 using var smtp = new SmtpClient();
