@@ -2,6 +2,7 @@
 using ECommerceSystem.Application.Repositories;
 using ECommerceSystem.Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
+using ECommerceSystem.Application.Services;
 
 
 namespace ECommerceSystem.API.Controllers
@@ -12,11 +13,17 @@ namespace ECommerceSystem.API.Controllers
     {
         readonly private IUserReadRepository _userReadRepository;
         readonly private IUserWriteRepository _userWriteRepository;
+        private readonly IMessagingService _messagingService;
+        private readonly IConfiguration _configuration;
 
-        public UserController(IUserReadRepository userReadRepository, IUserWriteRepository userWriteRepository)
+        public UserController(IUserReadRepository userReadRepository, IUserWriteRepository userWriteRepository , IMessagingService messagingService ,IConfiguration configuration)
         {
             _userReadRepository = userReadRepository;
             _userWriteRepository = userWriteRepository;
+            _messagingService = messagingService;
+            _configuration = configuration;
+
+
         }
 
         [HttpGet("get-all-users")]
@@ -53,19 +60,33 @@ namespace ECommerceSystem.API.Controllers
 
         public async Task<IActionResult> AddSingleUserAction([FromBody]User user)
         {
-            
-            var isAdded =await _userWriteRepository.AddAsync(user);
+
+            var isAdded = await _userWriteRepository.AddAsync(user);
 
             if (!isAdded)
             {
                 return BadRequest("User could not be added");
-
             }
+
             await _userWriteRepository.SaveAsync();
 
-            return Ok(user);
+            // Create an email event to be sent (you might add more properties if needed)
+            var emailEvent = new EMailModel
+            {
+                receptor = user.Email, // Assuming your User entity has an Email property
+                subject = "ETicaret Sisteme Hoşgeldiniz",
+                body = $"Kayıt olduğun için teşekkürler {user.UserName} .<br/><br/> " +
+                "Seni aramızda görmekten mutluluk duyuyoruz"
+            };
 
+            // Publish the email event to the queue
+            var queueName = _configuration["RabbitMQ:QueueName"];
+            _messagingService.Publish(emailEvent, queueName);
+
+            return Ok(user);
         }
+
+        
 
 
         [HttpPost("add-range-user")]

@@ -33,6 +33,7 @@ namespace ECommerceSystem.Infrastructure
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddHostedService<RabbitMqConsumerService>();
             services.AddTransient<IEMailService, EMailService>();
+            services.AddTransient<IMessagingService , RabbitMqService>();
 
 
 

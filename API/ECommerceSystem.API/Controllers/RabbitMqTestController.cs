@@ -17,13 +17,13 @@ namespace ECommerceSystem.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateOrder([FromBody] OrderDto order)
+        public IActionResult CreateOrder([FromBody] EMailModel mail)
         {
             // Validate and process the order (e.g., save to database in Application layer)
             // After processing, publish a message to RabbitMQ for further asynchronous processing.
 
             var queueName = _configuration["RabbitMQ:QueueName"];
-            _messagingService.Publish(order, queueName);
+            _messagingService.Publish(mail, queueName);
 
             return Accepted(new { Message = "Order received and processing initiated." });
         }
@@ -44,10 +44,5 @@ namespace ECommerceSystem.API.Controllers
 
     }
 
-    public class OrderDto
-    {
-        public int OrderId { get; set; }
-        public string Item { get; set; }
-        public int Quantity { get; set; }
-    }
+
 }
