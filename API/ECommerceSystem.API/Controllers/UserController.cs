@@ -3,7 +3,8 @@ using ECommerceSystem.Application.Repositories;
 using ECommerceSystem.Domain.Entities.Users;
 using Microsoft.AspNetCore.Authorization;
 using ECommerceSystem.Application.Services;
-
+using Google.Apis.Auth;
+using System.Linq;
 
 namespace ECommerceSystem.API.Controllers
 {
@@ -16,78 +17,59 @@ namespace ECommerceSystem.API.Controllers
         private readonly IMessagingService _messagingService;
         private readonly IConfiguration _configuration;
 
-        public UserController(IUserReadRepository userReadRepository, IUserWriteRepository userWriteRepository , IMessagingService messagingService ,IConfiguration configuration)
+        public UserController(IUserReadRepository userReadRepository, IUserWriteRepository userWriteRepository, IMessagingService messagingService, IConfiguration configuration)
         {
             _userReadRepository = userReadRepository;
             _userWriteRepository = userWriteRepository;
             _messagingService = messagingService;
             _configuration = configuration;
-
-
         }
 
         [HttpGet("get-all-users")]
         [Authorize]
-
         public IActionResult GetAllUsersAction()
         {
-            if(User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value != "1")
+            if (User.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value != "1")
             {
                 return Unauthorized("You do not have the required role to access this resource.");
             }
             var users = _userReadRepository.GetAll().ToList();
             return Ok(users);
-
         }
 
         [HttpGet("get-user-by-id/{id}")]
         public async Task<IActionResult> GetUserByIdAction(string id)
         {
             var user = await _userReadRepository.GetByIdAsync(id);
-
             if (user == null)
             {
                 return NotFound();
             }
-
-                return Ok(user);
+            return Ok(user);
         }
 
-
-
-
         [HttpPost("add-single-user")]
-
-        public async Task<IActionResult> AddSingleUserAction([FromBody]User user)
+        public async Task<IActionResult> AddSingleUserAction([FromBody] User user)
         {
-
             var isAdded = await _userWriteRepository.AddAsync(user);
-
             if (!isAdded)
             {
                 return BadRequest("User could not be added");
             }
-
             await _userWriteRepository.SaveAsync();
 
-            // Create an email event to be sent (you might add more properties if needed)
             var emailEvent = new EMailModel
             {
-                receptor = user.Email, // Assuming your User entity has an Email property
+                receptor = user.Email,
                 subject = "ETicaret Sisteme Hoşgeldiniz",
-                body = $"Kayıt olduğun için teşekkürler {user.UserName} .<br/><br/> " +
-                "Seni aramızda görmekten mutluluk duyuyoruz"
+                body = $"Kayıt olduğun için teşekkürler {user.UserName} .<br/><br/> Seni aramızda görmekten mutluluk duyuyoruz"
             };
 
-            // Publish the email event to the queue
             var queueName = _configuration["RabbitMQ:QueueName"];
             _messagingService.Publish(emailEvent, queueName);
 
             return Ok(user);
         }
-
-        
-
 
         [HttpPost("add-range-user")]
         public async Task<IActionResult> AddRangeOfUsersAction([FromBody] List<User> users)
@@ -102,7 +84,6 @@ namespace ECommerceSystem.API.Controllers
         }
 
         [HttpPut("update-user")]
-
         public async Task<IActionResult> UpdateUserAction([FromBody] User user)
         {
             var isUpdated = _userWriteRepository.Update(user);
@@ -115,11 +96,9 @@ namespace ECommerceSystem.API.Controllers
         }
 
         [HttpDelete("remove-single-user")]
-
         public async Task<IActionResult> RemoveUserAction([FromBody] User user)
         {
             var isRemoved = _userWriteRepository.Remove(user);
-
             if (!isRemoved)
             {
                 return BadRequest("User could not be removed");
@@ -128,8 +107,7 @@ namespace ECommerceSystem.API.Controllers
             return Ok(user);
         }
 
-        [HttpDelete("remove-range-user")]           
-
+        [HttpDelete("remove-range-user")]
         public async Task<IActionResult> RemoveRangeOfUsersAction([FromBody] List<User> users)
         {
             var isRemoved = _userWriteRepository.RemoveRange(users);
@@ -142,7 +120,6 @@ namespace ECommerceSystem.API.Controllers
         }
 
         [HttpDelete("remove-user-by-id/{id}")]
-
         public async Task<IActionResult> RemoveUserByIdAction(string id)
         {
             var isRemoved = await _userWriteRepository.RemoveAsync(id);
@@ -154,11 +131,72 @@ namespace ECommerceSystem.API.Controllers
             return Ok(id);
         }
 
+        // New endpoint for Google Sign-In
+        [HttpPost("google-signin")]
+        public async Task<IActionResult> GoogleSignInAction([FromBody] GoogleSignInRequest request)
+        {
+            if (string.IsNullOrEmpty(request.token))
+            {
+                return BadRequest("Invalid Google token.");
+            }
 
+            GoogleJsonWebSignature.Payload payload;
+            try
+            {
+                var settings = new GoogleJsonWebSignature.ValidationSettings
+                {
+                    Audience = new List<string> { _configuration["Google:ClientId"] }
+                };
+                payload = await GoogleJsonWebSignature.ValidateAsync(request.token, settings);
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized($"Invalid or expired Google token. Error: {ex.Message}");
+            }
 
+            var email = payload.Email;
+            var name = payload.Name;
 
+            // Retrieve existing user by email; ensure you get a single user object.
+            var existingUser = _userReadRepository.GetWhere(u => u.Email == email).FirstOrDefault();
+            if (existingUser == null)
+            {
+                var newUser = new User
+                {
+   //                 RoleId = 1,
+                    Email = email,
+                    UserName = name,
+                   // PasswordHash = request.token // Using token as a marker for Google sign-in
+                    
+                };
 
+                var isAdded = await _userWriteRepository.AddAsync(newUser);
+                if (!isAdded)
+                {
+                    return BadRequest("User could not be added.");
+                }
+                await _userWriteRepository.SaveAsync();
 
+                var emailEvent = new EMailModel
+                {
+                    receptor = newUser.Email,
+                    subject = "Welcome to our E-Commerce System",
+                    body = $"Thank you for registering, {newUser.UserName}! We’re glad to have you with us."
+                };
+                var queueName = _configuration["RabbitMQ:QueueName"];
+                _messagingService.Publish(emailEvent, queueName);
 
+                // Set existingUser to the newly created user so that we return it.
+                existingUser = newUser;
+            }
+
+            // Here you could generate and return a JWT/session token if needed.
+            return Ok(existingUser);
+        }
+    }
+
+    public class GoogleSignInRequest
+    {
+        public string token { get; set; }
     }
 }
