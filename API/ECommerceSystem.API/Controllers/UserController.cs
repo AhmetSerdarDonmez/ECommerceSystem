@@ -16,13 +16,15 @@ namespace ECommerceSystem.API.Controllers
         readonly private IUserWriteRepository _userWriteRepository;
         private readonly IMessagingService _messagingService;
         private readonly IConfiguration _configuration;
+        private readonly IAuthenticationService _authenticationService;
 
-        public UserController(IUserReadRepository userReadRepository, IUserWriteRepository userWriteRepository, IMessagingService messagingService, IConfiguration configuration)
+        public UserController(IUserReadRepository userReadRepository, IUserWriteRepository userWriteRepository, IMessagingService messagingService, IConfiguration configuration, IAuthenticationService authenticationService)
         {
             _userReadRepository = userReadRepository;
             _userWriteRepository = userWriteRepository;
             _messagingService = messagingService;
             _configuration = configuration;
+            _authenticationService = authenticationService;
         }
 
         [HttpGet("get-all-users")]
@@ -156,6 +158,7 @@ namespace ECommerceSystem.API.Controllers
 
             var email = payload.Email;
             var name = payload.Name;
+            var googleUserId = payload.Subject;
 
             // Retrieve existing user by email; ensure you get a single user object.
             var existingUser = _userReadRepository.GetWhere(u => u.Email == email).FirstOrDefault();
@@ -163,10 +166,12 @@ namespace ECommerceSystem.API.Controllers
             {
                 var newUser = new User
                 {
-   //                 RoleId = 1,
+                    RoleId = 1,
                     Email = email,
                     UserName = name,
-                   // PasswordHash = request.token // Using token as a marker for Google sign-in
+                   // PasswordHash = request.token, // Using token as a marker for Google sign-in
+                   PasswordHash ="google",
+                   PhoneNumber = "---",
                     
                 };
 
@@ -187,11 +192,32 @@ namespace ECommerceSystem.API.Controllers
                 _messagingService.Publish(emailEvent, queueName);
 
                 // Set existingUser to the newly created user so that we return it.
-                existingUser = newUser;
+               
+
+             existingUser = newUser;
+
+
+
+            }
+            
+            var existingUserToken =await _authenticationService.GenerateTokenForUserAsync(existingUser);
+
+            if (!existingUserToken.Success || string.IsNullOrEmpty(existingUserToken.Token))
+            {
+                // Log error: Failed to generate token
+                return StatusCode(500, "User processed but failed to generate application token.");
             }
 
+
             // Here you could generate and return a JWT/session token if needed.
-            return Ok(existingUser);
+            // existingUser = await _userReadRepository.GetByIdAsync("16");
+          
+                return Ok( new { token = existingUserToken.Token });
+
+            
+
+            
+
         }
     }
 

@@ -42,6 +42,57 @@ namespace ECommerceSystem.Infrastructure.Services
             return (true, token);
         }
 
+
+        // Add this method INSIDE the ECommerceSystem.Infrastructure.Services.AuthenticationService class
+
+        public async Task<(bool Success, string? Token)> GenerateTokenForUserAsync(User user)
+        {
+            if (user == null)
+            {
+                // Log error: Cannot generate token for null user
+                return (Success: false, Token: null);
+            }
+
+            // IMPORTANT: The GenerateToken method needs the RoleId.
+            // Ensure the Role is loaded on the 'user' object passed in.
+            // If unsure if the caller loaded it, it's safer to reload the user here.
+            User userWithRole = user; // Assume role might be loaded by caller for now
+            if (user.Role == null) // Check if Role is actually loaded
+            {
+                // If not loaded by the caller, reload the user with their Role included
+                userWithRole = await _userRepository.GetWhere(u => u.UserId == user.UserId) // Assuming UserId is unique key
+                                                     .Include(u => u.Role)
+                                                     .FirstOrDefaultAsync();
+                if (userWithRole == null)
+                {
+                    // Log error: User not found when reloading for token generation
+                    return (Success: false, Token: null);
+                }
+            }
+
+            // Use null-conditional operator and default RoleId if necessary (matches AuthenticateAsync)
+            var roleId = userWithRole.Role?.RoleId ?? 1; // Default to RoleId 1 if null
+
+            try
+            {
+                // Directly call the token service with the user details
+                var token = _tokenService.GenerateToken(userWithRole.UserId.ToString(), userWithRole.UserName, roleId.ToString());
+
+                if (string.IsNullOrEmpty(token))
+                {
+                    // Log error: Token service returned empty token
+                    return (Success: false, Token: null);
+                }
+                return (Success: true, Token: token);
+            }
+            catch (Exception ex)
+            {
+                // Log exception ex during token generation
+                Console.WriteLine($"Error in GenerateTokenForUserAsync: {ex.Message}"); // Use proper logging
+                return (Success: false, Token: null);
+            }
+        }
+
         /// <summary>
         /// Şifre doğrulaması yapar.
         /// </summary>
