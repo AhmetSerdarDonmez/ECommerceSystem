@@ -2,7 +2,7 @@
 using ECommerceSystem.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ECommerceSystem.API.Controllers
+namespace ECommerceSystem.API.Controllers.TestControllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
-namespace ECommerceSystem.API.Controllers
+namespace ECommerceSystem.API.Controllers.TestControllers
 {
     [Route("api/[controller]")]
     [ApiController]

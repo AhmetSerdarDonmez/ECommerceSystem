@@ -14,7 +14,8 @@ using Microsoft.IdentityModel.Tokens;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ECommerceDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+    .LogTo(Console.WriteLine, LogLevel.Information));
 
     
  void ConfigureServices(IServiceCollection services)
@@ -27,6 +28,16 @@ builder.Services.AddDbContext<ECommerceDbContext>(options =>
                 .AllowAnyMethod()
                 .AllowAnyHeader());
     });
+
+     services.AddCors(options =>
+     {
+         options.AddPolicy("AllowAll", policy =>
+         {
+             policy.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+         });
+     });
 
     services.AddSwaggerGen(c =>
     {
@@ -118,7 +129,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowReactApp");   
+app.UseCors("AllowAll");   
 
 
 app.UseHttpsRedirection();

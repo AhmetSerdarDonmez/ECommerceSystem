@@ -6,7 +6,7 @@ using ECommerceSystem.Application.Services;
 using Google.Apis.Auth;
 using System.Linq;
 
-namespace ECommerceSystem.API.Controllers
+namespace ECommerceSystem.API.Controllers.EntityControllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,7 +27,7 @@ namespace ECommerceSystem.API.Controllers
             _authenticationService = authenticationService;
         }
 
-        [HttpGet("get-all-users")]
+        [HttpGet("get-all-user")]
         [Authorize]
         public IActionResult GetAllUsersAction()
         {
